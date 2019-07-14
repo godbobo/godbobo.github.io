@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hexo搭建Github Pages个人博客（一）]]></title>
+    <url>%2F2019%2F07%2F14%2Flearn-hexo-01%2F</url>
+    <content type="text"><![CDATA[以前也了解过Hexo，但因为各种操作都需要敲命令，我这么懒，就是不想敲命令~所以就没怎么玩过这个。这些天无意间了解到有个Hexo的客户端，觉得可以试试了。 搭建完成之后文章列表只有一篇HelloWorld，不能忍不能忍，于是诞生了这篇文章。。。。 一、开启Github Pages在Github中创建一个新的仓库，仓库名字为：[你的用户名].github.io,例如我的用户名为godbobo，那么填写的名称就是godbobo.github.io 其他什么都不用填，点击创建。然后打开该项目的Settings: 在Github Pages这个栏目下点击Choose Theme。（我这个是已经创建好的，界面和没有创建过的是不一样的） 然后会跳转到选择主题的界面，直接默认第一个就好，反正后面还要换成Hexo的，选择之后在新的页面点击commit提交更改，一个崭新的Github Pages就建立好了，并且可以直接通过刚才的项目名进行访问。 一个账号只能有一个Github Pages可以通过这种方式访问。 到这一步，Github Pages就算是配置好了，下面就要开始激动人心的Hexo配置了。 二、安装Hexo首先全局安装Hexo脚手架： 1$ npm install hexo-cli -g 不知道为什么，我用yarn安装之后命令行没有hexo这个命令，万般无奈之下，我还是用了npm来安装。。。 用脚手架初始化博客目录： 123$ hexo init godbobo.github.io$ cd godbobo.github.io$ yarn 这里为了保险起见我没把项目放到中文目录下，直接在D盘建的文件夹。 生成并运行Hexo： 12345$ hexo clean# g 即 generate$ hexo g# s 即 serve$ hexo s 打开浏览器localhost:4000，即可看到效果： 注意到地址栏了吗？我已经把它部署到Github Pages上了，要实现这样的效果，请看下回分解~ 哦不，是下一步。 三、部署到Github Pages本地安装git以及如何连接到github的过程就不在这里讲了，下面直接开始正文： 安装hexo-deployer-git： 1$ yarn add hexo-deployer-git 在生成的项目中可以看到有一个_config.yml的文件，它是hexo的用户配置文件： 我们需要在这里配置自己刚刚创建的Github Pages地址，在该文件中搜索deploy或直接到文件末尾，做出类似下图的修改： 然后命令行中输入： 12# d 即 deploy$ hexo d 如果是第一次执行这个命令会让你输入github的账号密码，输入之后就能够发布到Github Pages上了。 四、个性化配置1、主题配置主题可以在https://hexo.io/themes上面找到自己满意的，不过这里我还是推荐朴素又不失内涵的next主题，它还有四个子主题可供选择。 将主题下载下来后(直接download zip就行了，用git命令感觉好慢)，解压并将目录重命名为next，然后放到hexo项目的/themes/下。 然后打开项目（站点）配置文件_config.yml，搜索theme或直接到文件末尾，将默认主题改为next即可。 然后重新运行hexo s就可以看到主题已经改变。 2、设置语言运行后发现整个页面都是英文，我大字都不识几个让我看英文？这可不行。 打开站点配置文件_config.yml及主题配置文件/themes/next/_config.yml，搜索到language，并将其改为zh-CN即可。 放上我更换主题以及换了语言之后的页面样子： 3、设置next子主题咦，你的next主题怎么和我的不一样？我也要我也要~ 在刚刚hexo-next的github页面可以看到这个主题下一共有四个子主题可供选择： 经过一番挑选，我觉得Gemini可能更养眼一点，打开主题配置文件/themes/next/_config.yml，搜索scheme，将其改为Gemini并重新生成页面即可。 4、支持RSS如果自己能读到自己的Feed，那该有多好~ 安装hexo-generator-feed插件： 1$ yarn add hexo-generator-feed 完毕！ 没错，就是这么简单！ 点击RSS链接，就会跳转到atom.xml页面，这就表示RSS已经成功生成了。 五、使用hexo-client说了大半天，花里胡哨，我要怎么不费吹灰之力新建文章编辑文章？ 打开https://github.com/gaoyoubo/hexo-client这个仓库，在README的最下方有最新版的下载地址，然后下载并安装。 首次进入需要设置hexo项目的目录，设置即可。 目前整个项目还很简陋，编辑文章时虽说有上传图片的功能，但却不能通过剪切板上传，还是很鸡肋的。所以现在这篇文章我就是通过Typora来编写，PicGo来上传图片的。 整个软件用起来并不复杂，稍微摸索以下就会了，只是添加标签和分类的功能肉眼是找不到的，需要在编辑文章时找到Front-matter，在这个里面配置标签、分类信息： 其中title为tags表示标签，categories表示分类，如果要添加多个，需要使用yml文件的数组格式。 附录在查找问题的过程中了解到Hexo的文档，以后要深入折腾的话可以参考一下： Hexo文档 Hexo-Next主题配置文档 一般来说，每次更改内容后，最好要依次执行以下下面三个命令： 1234# 这条不执行应该也可以，我这里每次改东西后不执行它也不会有问题$ hexo clean$ hexo g$ hexo s 最后，看hexo官网中的描述，还有好多花样自己没有尝试过，比如评论功能，所以后续应该会有第二篇写hexo的文章。]]></content>
+      <categories>
+        <category>好多坑</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>
