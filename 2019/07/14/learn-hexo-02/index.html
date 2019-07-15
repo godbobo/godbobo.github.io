@@ -103,7 +103,6 @@
 </script>
 
 
-
   <meta name="description" content="有点无聊，有点焦虑。 今天下午刚搞完第一波Hexo的部署，晚上又闲的没事干，那就继续捣鼓这个博客吧。 这是第二篇有关Hexo的文章，没有看过第一篇的可以去瞅瞅： Hexo搭建Github Pages个人博客（一） 一、背景动画相信大家在浏览网站时肯定见过网页背景随鼠标移动而变化的特效，以前以为很高大上，原来就是引一个js库的事。  这个功能仅适用于next主题，其他主题没有实验过。  打开/the">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
@@ -129,8 +128,6 @@
 <meta name="twitter:description" content="有点无聊，有点焦虑。 今天下午刚搞完第一波Hexo的部署，晚上又闲的没事干，那就继续捣鼓这个博客吧。 这是第二篇有关Hexo的文章，没有看过第一篇的可以去瞅瞅： Hexo搭建Github Pages个人博客（一） 一、背景动画相信大家在浏览网站时肯定见过网页背景随鼠标移动而变化的特效，以前以为很高大上，原来就是引一个js库的事。  这个功能仅适用于next主题，其他主题没有实验过。  打开/the">
 <meta name="twitter:image" content="https://i.loli.net/2019/07/14/5d2b17a2962a946732.png">
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="郑博的博客" type="application/atom+xml">
@@ -259,6 +256,22 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言板">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/message-board/" rel="section"><i class="menu-item-icon fa fa-fw fa-inbox"></i> <br>留言板</a>
 
   </li>
         
@@ -420,11 +433,41 @@
           
             
             
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/14/learn-hexo-02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/14/learn-hexo-02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
+            <span id="/2019/07/14/learn-hexo-02/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo搭建Github Pages个人博客（二）">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
           
 
           
@@ -641,10 +684,49 @@
     
 
     
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Godbobo wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
 
     
       
     
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Godbobo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Godbobo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -656,7 +738,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
         </div>
       
@@ -679,6 +761,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/07/15/learn-hexo-03/" rel="prev" title="Hexo搭建Github Pages个人博客（三）">
+                Hexo搭建Github Pages个人博客（三） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -698,6 +784,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -748,7 +838,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -797,6 +887,76 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="GitHub &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bobobiubiubiubiu@gmail.com" title="E-Mail &rarr; mailto:bobobiubiubiubiu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056965815024/info" title="Weibo &rarr; https://weibo.com/p/1005056965815024/info" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="Twitter &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/zheng-bo-33-3/activities" title="Zhihu &rarr; https://www.zhihu.com/people/zheng-bo-33-3/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-university"></i>Zhihu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.instagram.com/bobobiubiubiubiu/" title="Instagram &rarr; https://www.instagram.com/bobobiubiubiubiu/" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
           
 
           
@@ -861,7 +1021,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">12k</span>
   
 
   
@@ -872,7 +1032,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">21 分钟</span>
   
 </div>
 
@@ -891,6 +1051,32 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -909,7 +1095,7 @@
 
     
   </div>
-
+<script src="/js/heart.js"></script>
   
 
 <script>
@@ -1001,6 +1187,32 @@
   
 
   
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'FkAoaWugMknhSEXfUtqg0s8V-gzGzoHsz',
+    appKey: '54yJVzWEjeHxJMChYSasHSjV',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
 
 
   
@@ -1359,6 +1571,5 @@
 
 
   
-
 </body>
 </html>
