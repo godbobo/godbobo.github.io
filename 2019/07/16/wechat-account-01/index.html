@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+  <meta name="google-site-verification" content="mZLxF48d2ip8QF6BieklFpBeCAVvBu6K3dulAYVYMSY">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+  <meta name="description" content="一直想写一个记账软件，但界面的设计真让我头大。这不，刚买了个服务器，那用这个当后台存储，微信公众号菜单作为界面交互，练个手？ 我的服务器只有512M内存，10G硬盘，跑Java就别想了。刚刚看自己的SpringBoot应用跑在自己电脑上就占了479M内存，这还没说Mysql呢，服务器还挂着SSR，没办法，不能用Java来开发了。 从网上查找Java、Python、nodejs、php的性能比较，都">
+<meta name="keywords" content="微信开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信公众号制作记账功能（一）">
+<meta property="og:url" content="https://godbobo.github.io/2019/07/16/wechat-account-01/index.html">
+<meta property="og:site_name" content="郑博的博客">
+<meta property="og:description" content="一直想写一个记账软件，但界面的设计真让我头大。这不，刚买了个服务器，那用这个当后台存储，微信公众号菜单作为界面交互，练个手？ 我的服务器只有512M内存，10G硬盘，跑Java就别想了。刚刚看自己的SpringBoot应用跑在自己电脑上就占了479M内存，这还没说Mysql呢，服务器还挂着SSR，没办法，不能用Java来开发了。 从网上查找Java、Python、nodejs、php的性能比较，都">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/07/15/5d2c8143a82a922054.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/15/5d2c81d64dce639607.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d182b5ff4654818.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d1de895fec15097.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d2086e8f5727885.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d3ab4418e332726.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d3f74af56976941.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d4eae5ff7167356.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d55a2cdf5d21109.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d63cced9cc33840.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d6f3d5c13419133.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d710489eb360784.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/16/5d2d71888a30d64987.png">
+<meta property="og:updated_time" content="2019-07-16T06:47:38.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信公众号制作记账功能（一）">
+<meta name="twitter:description" content="一直想写一个记账软件，但界面的设计真让我头大。这不，刚买了个服务器，那用这个当后台存储，微信公众号菜单作为界面交互，练个手？ 我的服务器只有512M内存，10G硬盘，跑Java就别想了。刚刚看自己的SpringBoot应用跑在自己电脑上就占了479M内存，这还没说Mysql呢，服务器还挂着SSR，没办法，不能用Java来开发了。 从网上查找Java、Python、nodejs、php的性能比较，都">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/15/5d2c8143a82a922054.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="郑博的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://godbobo.github.io/2019/07/16/wechat-account-01/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>微信公众号制作记账功能（一） | 郑博的博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f333ed4a20ac94fa7e29c77f42511df2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">郑博的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">人生如梦未醒时，梦如人生我是谁</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言板">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/message-board/" rel="section"><i class="menu-item-icon fa fa-fw fa-inbox"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2019/07/16/wechat-account-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godbobo">
+      <meta itemprop="description" content="红墙白雪，要你喜欢，怎能忘记">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="郑博的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信公众号制作记账功能（一）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-16 14:47:38" itemprop="dateCreated datePublished" datetime="2019-07-16T14:47:38+08:00">2019-07-16</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/好多坑/" itemprop="url" rel="index"><span itemprop="name">好多坑</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/16/wechat-account-01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/wechat-account-01/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/07/16/wechat-account-01/" class="post-meta-item leancloud_visitors" data-flag-title="微信公众号制作记账功能（一）">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">12k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">20 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一直想写一个记账软件，但界面的设计真让我头大。这不，刚买了个服务器，那用这个当后台存储，微信公众号菜单作为界面交互，练个手？</p>
+<p>我的服务器只有<strong>512M内存，10G硬盘</strong>，跑Java就别想了。刚刚看自己的SpringBoot应用跑在自己电脑上就占了479M内存，这还没说Mysql呢，服务器还挂着SSR，没办法，不能用Java来开发了。</p>
+<p>从网上查找Java、Python、nodejs、php的性能比较，都说nodejs性能最好，那就玩nodejs喽（当然我在python上纠结过，不过nodejs一是比较熟悉，而是自己想实现的聊天机器人可以通过API调用来实现，也就是python能做的nodejs都有替代方案，性能又好，那必须选它了）</p>
+<h1 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h1><h2 id="1、安装express"><a href="#1、安装express" class="headerlink" title="1、安装express"></a>1、安装express</h2><p>这里就参考<a href="http://expressjs.com/zh-cn/starter/installing.html" target="_blank" rel="noopener">Express官方文档</a>一步步操作的。</p>
+<p>不过官方文档稍微有点啰嗦，说了前一步，结果后面告诉你前面的方法太Low了。所以这里我就把关键部分再描述一遍。</p>
+<p>全局安装Express脚手架：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add express-generator</span><br></pre></td></tr></table></figure>
+
+<p>创建项目：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ express --view=pug myapp</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不输入项目名[myapp]，就会在当前目录生成各种文件。</p>
+<p>如果不输入–view=pug，控制台会报错jade模板不能用之类的事，我怂，我输入。</p>
+</blockquote>
+<p>进入项目，安装依赖并运行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> myapp</span><br><span class="line">$ yarn</span><br><span class="line">$ yarn start</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、控制台输出端口信息"><a href="#2、控制台输出端口信息" class="headerlink" title="2、控制台输出端口信息"></a>2、控制台输出端口信息</h2><p>这时控制台是很干巴巴的，对于就喜欢看控制台不停输出信息的Java开发者来说，难受吖。</p>
+<p>打开<code>/bin/www</code>，找到末尾的<code>onListening</code>方法，这样进行改动：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onListening</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  debug(<span class="string">'Listening on '</span> + bind);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Listening on '</span> + bind)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后控制台就会输出<code>Listening on port 3000</code>了，舒服了舒服了。</p>
+<h2 id="3、代码自动刷新"><a href="#3、代码自动刷新" class="headerlink" title="3、代码自动刷新"></a>3、代码自动刷新</h2><p>习惯了<code>vuejs</code>的自动刷新，每每改完文件还要<code>Ctrl + C</code>、<code>Y</code>、<code>⬆</code>是真的痛苦。还好我有~</p>
+<p><strong>nodemon</strong></p>
+<p>首先全局安装nodemon：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add nodemon</span><br></pre></td></tr></table></figure>
+
+<p>打开<code>package.json</code>，修改<code>scripts</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"start"</span>: <span class="string">"nodemon ./bin/www"</span></span><br></pre></td></tr></table></figure>
+
+<p>依旧是原来的配方，<code>yarn start</code>启动项目，舒服了舒服了。</p>
+<p><img src="https://i.loli.net/2019/07/15/5d2c8143a82a922054.png" alt></p>
+<h1 id="二、与微信服务器“配对”"><a href="#二、与微信服务器“配对”" class="headerlink" title="二、与微信服务器“配对”"></a>二、与微信服务器“配对”</h1><p>申请微信公众号之后，在开发者工具中找到公众平台测试账号，填写接口配置信息。</p>
+<p><img src="https://i.loli.net/2019/07/15/5d2c81d64dce639607.png" alt></p>
+<p>当然现在点击保存肯定是提示配置失败的，下面我们开始配置自己的Express服务器来正确响应微信服务器的消息。</p>
+<p>在<code>/routes/</code>目录下新建<code>wx.js</code>文件，直接把<code>user.js</code>的内容复制过来。打开<code>app.js</code>，仿照<code>user.js</code>导入路由的方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wxRouter = <span class="built_in">require</span>(<span class="string">'./routes/wx'</span>)</span><br><span class="line">app.use(<span class="string">'/cqm/wx'</span>, wxRouter)</span><br></pre></td></tr></table></figure>
+
+<p>然后在测试号的页面再次点击保存，这次不是为了配对成功，而是查看接口会传来什么参数，然后我们需要验证这是微信服务器发来的消息。</p>
+<p>此时需要安装一个模块用来加密信息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add jssha --dev</span><br></pre></td></tr></table></figure>
+
+<p>然后就是根据传来的参数验证信息，成功后把<code>echostr</code>字段返回给微信服务器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 微信服务器认证</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1 获取微信服务器请求参数</span></span><br><span class="line">  <span class="keyword">var</span> signature = req.query.signature <span class="comment">// 加密签名</span></span><br><span class="line">  <span class="keyword">var</span> timestamp = req.query.timestamp <span class="comment">// 时间戳</span></span><br><span class="line">  <span class="keyword">var</span> nonce = req.query.nonce <span class="comment">// 随机数</span></span><br><span class="line">  <span class="keyword">var</span> echostr = req.query.echostr <span class="comment">// 随机字符串</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`接收到微信服务器认证请求`</span>)</span><br><span class="line">  <span class="comment">// 2 将token timestamp nonce 按字典序排序</span></span><br><span class="line">  <span class="keyword">var</span> array = [config.token, timestamp, nonce]</span><br><span class="line">  array.sort()</span><br><span class="line">  <span class="comment">// 3 将参数加密</span></span><br><span class="line">  <span class="keyword">var</span> tempStr = array.join(<span class="string">''</span>)</span><br><span class="line">  <span class="keyword">var</span> shaObj = <span class="keyword">new</span> jsSHA(<span class="string">'SHA-1'</span>, <span class="string">'TEXT'</span>)</span><br><span class="line">  shaObj.update(tempStr)</span><br><span class="line">  <span class="keyword">var</span> scyptoStr = shaObj.getHash(<span class="string">'HEX'</span>)</span><br><span class="line">  <span class="comment">// 4 将加密后的字符串与signature对比，相同则表示验证成功</span></span><br><span class="line">  <span class="keyword">if</span> (signature === scyptoStr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'验证成功'</span>)</span><br><span class="line">    res.send(echostr)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'验证失败'</span>)</span><br><span class="line">    res.send(<span class="string">'验证失败'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>保存后在微信测试号里再次保存配置信息，就可以保存成功了。</p>
+<blockquote>
+<p>我在测试时用到了一个公司的反向代理工具，把自己电脑映射到服务器的指定网址了。其实原理是差不多的，你只要有一台自己的服务器，在上面配置nginx反向代理，映射到你本机，就可以实现开发环境与微信服务器联调了。</p>
+</blockquote>
+<h1 id="三、响应用户发来的消息"><a href="#三、响应用户发来的消息" class="headerlink" title="三、响应用户发来的消息"></a>三、响应用户发来的消息</h1><p>微信服务器会把用户发送的消息以post方式发送到刚刚验证的接口，同样的，我们需要正确回复微信服务器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 微信服务器消息接收</span></span><br><span class="line">router.post(<span class="string">'/'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">var</span> signature = req.query.signature</span><br><span class="line">  <span class="keyword">var</span> timestamp = req.query.timestamp</span><br><span class="line">  <span class="keyword">var</span> nonce = req.query.nonce</span><br><span class="line">  <span class="keyword">var</span> openid = req.query.openid</span><br><span class="line">  <span class="comment">// 需要回复success微信才会认为服务器已经收到消息</span></span><br><span class="line">  <span class="keyword">var</span> to = <span class="string">`&lt;ToUserName&gt;<span class="subst">$&#123;openid&#125;</span>&lt;/ToUserName&gt;`</span></span><br><span class="line">  <span class="keyword">var</span> <span class="keyword">from</span> = <span class="string">`&lt;FromUserName&gt;<span class="subst">$&#123;config.userName&#125;</span>&lt;/FromUserName&gt;`</span></span><br><span class="line">  <span class="keyword">var</span> time = <span class="string">`&lt;CreateTime&gt;<span class="subst">$&#123;timestamp&#125;</span>&lt;/CreateTime&gt;`</span></span><br><span class="line">  <span class="keyword">var</span> type = <span class="string">`&lt;MsgType&gt;text&lt;/MsgType&gt;`</span></span><br><span class="line">  <span class="keyword">var</span> msg = <span class="string">`&lt;Content&gt;你好,我在努力进步中哦...&lt;/Content&gt;`</span></span><br><span class="line">  res.send(<span class="string">`&lt;xml&gt;<span class="subst">$&#123;to&#125;</span><span class="subst">$&#123;<span class="keyword">from</span>&#125;</span><span class="subst">$&#123;time&#125;</span><span class="subst">$&#123;type&#125;</span><span class="subst">$&#123;msg&#125;</span>&lt;/xml&gt;`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>然后手机关注自己的测试号并随便发送一个消息，就可以看到自己的回复了：</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d182b5ff4654818.png" alt></p>
+<p>还是很神奇的，不过到这一步只是简单实现了回复消息，实际上我们没有识别用户的输入，也没有做其他复杂的机制，比如5秒内无法回复时要先返回<code>success</code>告知微信服务器我收到消息了，还要应对微信服务器的3次重试机制。</p>
+<p>下面就先实现识别用户发送消息的功能：</p>
+<p>在nodejs中，接收post请求参数的方式和Java的不一样，Java直接就可以获取了，而nodejs还要等待数据传输完毕。因此我们就需要先监听数据传输事件，并将数据保存到一个buffer中，然后监听接收完成的事件，接着才是处理数据及返回消息的步骤：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">var</span> buffer = []</span><br><span class="line"><span class="comment">// 监听data事件 用于接收数据</span></span><br><span class="line">  req.on(<span class="string">'data'</span>, data =&gt; &#123;</span><br><span class="line">    buffer.push(data)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 监听end事件，用于处理接收完成的数据</span></span><br><span class="line">  req.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(Buffer.concat(buffer).toString(<span class="string">'utf-8'</span>))</span><br><span class="line">    <span class="comment">// 需要回复success微信才会认为服务器已经收到消息</span></span><br><span class="line">    <span class="keyword">var</span> to = <span class="string">`&lt;ToUserName&gt;<span class="subst">$&#123;openid&#125;</span>&lt;/ToUserName&gt;`</span></span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="string">`&lt;FromUserName&gt;<span class="subst">$&#123;config.userName&#125;</span>&lt;/FromUserName&gt;`</span></span><br><span class="line">    <span class="keyword">var</span> time = <span class="string">`&lt;CreateTime&gt;<span class="subst">$&#123;timestamp&#125;</span>&lt;/CreateTime&gt;`</span></span><br><span class="line">    <span class="keyword">var</span> type = <span class="string">`&lt;MsgType&gt;text&lt;/MsgType&gt;`</span></span><br><span class="line">    <span class="keyword">var</span> msg = <span class="string">`&lt;Content&gt;你好,我在努力进步中哦...&lt;/Content&gt;`</span></span><br><span class="line">    res.send(<span class="string">`&lt;xml&gt;<span class="subst">$&#123;to&#125;</span><span class="subst">$&#123;<span class="keyword">from</span>&#125;</span><span class="subst">$&#123;time&#125;</span><span class="subst">$&#123;type&#125;</span><span class="subst">$&#123;msg&#125;</span>&lt;/xml&gt;`</span>)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>用惯了Java的我，发现不能直接获取post请求参数之后，我还傻傻地去找转换工具，结果看到了一个<code>body-parser</code>，用了之后发现没效果。算了算了，入乡随俗。</p>
+</blockquote>
+<p>这样修改之后，就可以获取到用户发来的消息了：</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d1de895fec15097.png" alt></p>
+<p>下面就是解析信息了（看到请求消息才明白官方文档的<code>![CDATA[]]</code>是不能省略的，但竟然识别出了我的回复，强吖）</p>
+<p>安装<code>fast-xml-parser</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add fast-xml-parser</span><br></pre></td></tr></table></figure>
+
+<p>解析xml数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlParser = <span class="built_in">require</span>(<span class="string">'fast-xml-parser'</span>)</span><br><span class="line"><span class="keyword">var</span> xml = Buffer.concat(buffer).toString(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(xml)</span><br><span class="line"><span class="keyword">var</span> json = xmlParser.convertToJson(xmlParser.getTraversalObj(xml))</span><br><span class="line"><span class="built_in">console</span>.log(json)</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们熟悉的json就又回来啦：</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d2086e8f5727885.png" alt></p>
+<h1 id="四、自定义菜单"><a href="#四、自定义菜单" class="headerlink" title="四、自定义菜单"></a>四、自定义菜单</h1><p>被动回复我们现在可以做到了，下面就是要主动向微信服务器发送消息告诉它我们要设置菜单项！</p>
+<h2 id="1、获取access-token"><a href="#1、获取access-token" class="headerlink" title="1、获取access_token"></a>1、获取access_token</h2><p>与微信服务器的很多交互都需要用到<code>access_token</code>的，而<code>access_token</code>有7200秒（2小时）的有效期，那我们需要做的，就是在项目启动后获取一次<code>access_token</code>，并且启动一个定时器，每隔7000秒重新获取一次。</p>
+<p>因为习惯了<code>vue.js</code>的开发模式，我这里在项目根目录下新建了<code>/api/wx.js</code>文件，专门负责发送微信请求。在请求库的选择上，因为我们现在是服务端，不可能只请求一个域名，那么用axios设置baseUrl的方式就不是特别合适，就直接用<code>request</code>库来发送请求就好了，每次请求都定义一下url，也没有特别麻烦，而且我看很多人都这么用，那应该不会错了。</p>
+<p>安装<code>request</code>和<code>querystring</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add request</span><br><span class="line">$ yarn add querystring</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中querystring是将json数据转换为url请求参数的库</p>
+</blockquote>
+<p>然后开始编写请求方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config/index'</span>)</span><br><span class="line"><span class="keyword">var</span> qs = <span class="built_in">require</span>(<span class="string">'querystring'</span>)</span><br><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取AccessToken</span></span><br><span class="line"><span class="keyword">const</span> getAccessToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> params = &#123;</span><br><span class="line">    <span class="string">'grant_type'</span>: <span class="string">'client_credential'</span>,</span><br><span class="line">    <span class="string">'appid'</span>: config.appid,</span><br><span class="line">    <span class="string">'secret'</span>: config.appsecret</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">`<span class="subst">$&#123;config.wxUrl&#125;</span>cgi-bin/token?<span class="subst">$&#123;qs.stringify(params)&#125;</span>`</span></span><br><span class="line">  <span class="comment">// console.log('getAccessToken请求地址为', url)</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    request(&#123;</span><br><span class="line">      method: <span class="string">'GET'</span>,</span><br><span class="line">      url: url</span><br><span class="line">    &#125;, (err, res, body) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (res) &#123;</span><br><span class="line">        resolve(<span class="built_in">JSON</span>.parse(body))</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打开<code>/bin/www</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wxAPI = <span class="built_in">require</span>(<span class="string">'../api/wx'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onListening</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">var</span> getToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    wxAPI.getAccessToken().then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      global.access_token = data.access_token</span><br><span class="line">      <span class="built_in">console</span>.log(global.access_token)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  getToken()</span><br><span class="line">  <span class="comment">// 每隔7000秒重新获取一次access_token</span></span><br><span class="line">  setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    getToken()</span><br><span class="line">  &#125;, <span class="number">7000</span> * <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后重新运行项目，就会在控制台打印出我们获取到的token，这里将<code>access_token</code>保存到了global全局对象中，方便其他地方使用。</p>
+<blockquote>
+<p>nodemon好像不会监听www文件的修改，所以需要我们重新启动服务。</p>
+</blockquote>
+<h2 id="2、配置自定义菜单"><a href="#2、配置自定义菜单" class="headerlink" title="2、配置自定义菜单"></a>2、配置自定义菜单</h2><p>有了<code>access_token</code>，我们就可以放心地向微信服务器发送请求了。但在此之前，我们还没有定义自己的菜单呢。我这里将菜单保存为json格式，同时也是熟悉一下文件操作：</p>
+<p><strong>/config/wxmenus.json</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"button"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"记账"</span>,</span><br><span class="line">      <span class="attr">"sub_button"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"收入"</span>,</span><br><span class="line">          <span class="attr">"key"</span>: <span class="string">"add_money"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"支出"</span>,</span><br><span class="line">          <span class="attr">"key"</span>: <span class="string">"sub_money"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"账单"</span>,</span><br><span class="line">          <span class="attr">"key"</span>: <span class="string">"bill"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"预算"</span>,</span><br><span class="line">          <span class="attr">"key"</span>: <span class="string">"wish"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"待办"</span>,</span><br><span class="line">      <span class="attr">"key"</span>: <span class="string">"todo_list"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为我要做记账的功能，所以就预先把菜单定义好，后面也省得再去调整了。</p>
+<p>首先尝试一下能否正确读取出json文件：</p>
+<p><strong>/api/wx.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">// 设置自定义菜单</span></span><br><span class="line"><span class="keyword">const</span> setMenu = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 读取json文件</span></span><br><span class="line">    fs.readFile(<span class="string">'./config/wxmenus.json'</span>, (err, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 得到配置的菜单信息</span></span><br><span class="line">        <span class="keyword">var</span> m = <span class="built_in">JSON</span>.parse(data.toString())</span><br><span class="line">        resolve(m)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意这里的文件路径是基于项目路径而不是<code>wx.js</code>当前路径。</p>
+</blockquote>
+<p>然后同样在<code>www</code>中的<code>onListening</code>添加调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置微信菜单</span></span><br><span class="line">  wxAPI.setMenu().then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(error)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>重启服务就会在控制台看到我们要的结果：</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d3ab4418e332726.png" alt></p>
+<p>下面继续修改<code>wx.js</code>，将我们配置的菜单发送给微信服务器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置自定义菜单</span></span><br><span class="line"><span class="keyword">const</span> setMenu = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 读取json文件</span></span><br><span class="line">    fs.readFile(<span class="string">'./config/wxmenus.json'</span>, (err, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 得到配置的菜单信息</span></span><br><span class="line">        <span class="keyword">const</span> menuData = data.toString()</span><br><span class="line">        <span class="keyword">const</span> url = <span class="string">`<span class="subst">$&#123;config.wxUrl&#125;</span>cgi-bin/menu/create?access_token=<span class="subst">$&#123;global.access_token&#125;</span>`</span></span><br><span class="line">        request(&#123;</span><br><span class="line">          method: <span class="string">'POST'</span>,</span><br><span class="line">          url: url,</span><br><span class="line">          form: menuData</span><br><span class="line">        &#125;, (err, res, body) =&gt; &#123;</span><br><span class="line">          <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            reject(err)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            resolve(<span class="built_in">JSON</span>.parse(body))</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改完这个之后还不够，因为这里用到了<code>access_token</code>，我们必须保证在发送菜单的这个请求时我们已经获取到了<code>access_token</code>，那么我们就要修改<code>www</code>文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isInit = <span class="literal">false</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onListening</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">var</span> getToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    wxAPI.getAccessToken().then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      global.access_token = data.access_token</span><br><span class="line">      <span class="built_in">console</span>.log(global.access_token)</span><br><span class="line">      <span class="keyword">if</span> (!isInit) &#123;</span><br><span class="line">        <span class="comment">// 设置微信菜单</span></span><br><span class="line">        wxAPI.setMenu().then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(data)</span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.error(error)</span><br><span class="line">        &#125;)</span><br><span class="line">        isInit = <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  getToken()</span><br><span class="line">  <span class="comment">// 每隔7000秒重新获取一次access_token</span></span><br><span class="line">  setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    getToken()</span><br><span class="line">  &#125;, <span class="number">7000</span> * <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就是通过一个标志位来判断获取<code>access_token</code>后是否还需要发送设置菜单的请求。然后取消关注测试号，再重新关注一下：</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d3f74af56976941.png" alt></p>
+<p>可以看到我们的菜单已经设置生效了。在这个过程中我还注意到控制台还接收到了用户关注和取消关注事件的请求，这表明这个post接口不只是用来接收消息的，应该还有其他用处。</p>
+<h2 id="3、接收菜单点击事件"><a href="#3、接收菜单点击事件" class="headerlink" title="3、接收菜单点击事件"></a>3、接收菜单点击事件</h2><p>到这一步就要参考<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140454" target="_blank" rel="noopener">微信官方文档</a>给的事件类型了，然后在<code>/routes/wx.js</code>中根据不同类型做出不同回应即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听end事件，用于处理接收完成的数据</span></span><br><span class="line">  req.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> xml = Buffer.concat(buffer).toString(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">var</span> json = xmlParser.convertToJson(xmlParser.getTraversalObj(xml))</span><br><span class="line">    <span class="built_in">console</span>.log(json)</span><br><span class="line">    <span class="comment">// 定义返回消息</span></span><br><span class="line">    <span class="keyword">var</span> resbody = <span class="string">'success'</span></span><br><span class="line">    <span class="keyword">var</span> tempBody = &#123;</span><br><span class="line">      xml: &#123;</span><br><span class="line">        ToUserName: json.xml.FromUserName,</span><br><span class="line">        FromUserName: json.xml.ToUserName,</span><br><span class="line">        CreateTime: timestamp,</span><br><span class="line">        MsgType: <span class="string">'text'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> jParser = <span class="keyword">new</span> xmlParser.j2xParser()</span><br><span class="line">    <span class="comment">// 判断消息类型</span></span><br><span class="line">    <span class="keyword">if</span> (json.xml.MsgType === <span class="string">'text'</span>) &#123;</span><br><span class="line">      <span class="comment">// 普通文字消息</span></span><br><span class="line">      tempBody.xml.Content = <span class="string">'你好,我在努力进步中哦...'</span></span><br><span class="line">      resbody = jParser.parse(tempBody)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (json.xml.MsgType === <span class="string">'event'</span>) &#123;</span><br><span class="line">      <span class="comment">// 事件类型 一共有六种事件1 关注/取消关注事件 2 扫描带参数二维码事件 3 上报地理位置事件 4 自定义菜单事件 5 点击菜单拉取消息时的事件推送 6 点击菜单跳转链接时的事件推送</span></span><br><span class="line">      <span class="keyword">if</span> (json.xml.Event === <span class="string">'CLICK'</span>) &#123;</span><br><span class="line">        <span class="comment">// 自定义菜单事件</span></span><br><span class="line">        tempBody.xml.Content = <span class="string">`您点击了<span class="subst">$&#123;json.xml.EventKey&#125;</span>`</span></span><br><span class="line">        resbody = jParser.parse(tempBody)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (json.xml.Event === <span class="string">'subscribe'</span>) &#123;</span><br><span class="line">        <span class="comment">// 关注事件</span></span><br><span class="line">        tempBody.xml.Content = <span class="string">'欢迎关注'</span></span><br><span class="line">        resbody = jParser.parse(tempBody)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (json.xml.Event === <span class="string">'unsubscribe'</span>) &#123;</span><br><span class="line">        <span class="comment">// 取消关注事件 该事件不能给用户发送消息</span></span><br><span class="line">        resbody = <span class="string">''</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (json.xml.Event === <span class="string">'LOCATION'</span>) &#123;</span><br><span class="line">        <span class="comment">// 上报地理位置事件 暂时不考虑</span></span><br><span class="line">        resbody = <span class="string">''</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 其他事件有点复杂，先不做处理</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res.send(resbody)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>然后取消关注测试号再重新关注，将刚刚的几种事件类型试一下，看看会不会做出正确的响应即可。</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d4eae5ff7167356.png" alt></p>
+<h1 id="五、部署到正式的公众号"><a href="#五、部署到正式的公众号" class="headerlink" title="五、部署到正式的公众号"></a>五、部署到正式的公众号</h1><p>我的服务器是CentOS，并且是刚刚创建的，一片空白，那现在就需要安装nodejs环境和ftp服务了。</p>
+<p>以前自己在Linux下安装过ftp，不过失败了。但这次！看了leoxuan的<a href="https://www.cnblogs.com/leoxuan/p/8329998.html" target="_blank" rel="noopener">CentOS7 FTP安装与配置</a>后，我成功了！</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d55a2cdf5d21109.png" alt></p>
+<p>大家在按着这个教程来的时候用户名一定要弄对，上面截图中的一个错误就是我直接复制文章中的代码忽略了用户名才出错的。</p>
+<blockquote>
+<p>传输文件时我这里一直无法传输，按文章中说的关闭SeLinux也不行，更改权限775不起作用，最后索性改为777才可以成功上传。</p>
+</blockquote>
+<p>下面，在<code>app.js</code>中修改我们的代码，不再监听<code>/cqm/wx</code>了，这次翻身做主人，直接监听<code>/wx</code>！</p>
+<p>然后打包（压缩）项目，上传到服务器。</p>
+<p>下面需要在服务器安装nodejs，这里<del>我是参照<a href="https://www.cnblogs.com/liangjiongyao/p/9120535.html" target="_blank" rel="noopener">CentOS7.5安装nodejs</a>进行安装的。我选择的是第二种方法，毕竟以后全局安装插件就可以省点事了。</del></p>
+<p><del>不过编译真的好慢啊，我写完这行字的时候它还没有编译好。。。</del></p>
+<p>上面的安装对我来说完全不起作用，又参考了一篇文章<a href="https://blog.csdn.net/MatrixGod/article/details/81905159" target="_blank" rel="noopener">在CentOS 7上安装Node.js的4种方法（包含npm）</a>,用其中的第四种方法，终于是成功了，下面我把命令粘贴一下，方便以后使用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash</span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br><span class="line">nvm list-remote</span><br><span class="line">nvm install v10.16.0</span><br><span class="line">node -v</span><br><span class="line">npm</span><br></pre></td></tr></table></figure>
+
+<p>然后再安装我们需要的各种依赖，就可以使用<code>yarn start</code>启动项目了。</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d63cced9cc33840.png" alt></p>
+<p>但我们的服务是放在3000端口的，我们需要配置nginx服务器的反向代理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  aqzscn.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:3000/wx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过一番配置，运行，然后在微信公众号上配置自己的服务器信息（不要忘记修改Appid和Secret为公众号的），然后你就会发现，还有一大堆问题要解决。</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d6f3d5c13419133.png" alt></p>
+<p>其中ip不在白名单的问题好解决，直接在公众号上设置就好了，但下面的问题是真的没办法解决。</p>
+<p>没有权限。。好忧桑。。兴奋了大半天，没办法搞下去吖</p>
+<p>服务号又只能企业来做，那我只好等有钱了注册个公司搞这个了。</p>
+<p>那最后的最后，就试一下发送消息是否成功把。</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d710489eb360784.png" alt></p>
+<p>看样子是可以的，那还算是有点安慰，不枉这么长时间的辛苦。</p>
+<p><img src="https://i.loli.net/2019/07/16/5d2d71888a30d64987.png" alt></p>
+<p>看着这少得可怜的权限，以后怕是只能玩聊天机器人了。</p>
+<p>总的来说，下面就要想点奇招才能完成自己的记账功能了。那么各位看官，请看下回分解。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Godbobo wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Godbobo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Godbobo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/微信开发/" rel="tag"><i class="fa fa-tag"></i> 微信开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/learn-hexo-03/" rel="next" title="Hexo搭建Github Pages个人博客（三）">
+                <i class="fa fa-chevron-left"></i> Hexo搭建Github Pages个人博客（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Godbobo">
+            
+              <p class="site-author-name" itemprop="name">Godbobo</p>
+              <div class="site-description motion-element" itemprop="description">红墙白雪，要你喜欢，怎能忘记</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="GitHub &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bobobiubiubiubiu@gmail.com" title="E-Mail &rarr; mailto:bobobiubiubiubiu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056965815024/info" title="Weibo &rarr; https://weibo.com/p/1005056965815024/info" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="Twitter &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/zheng-bo-33-3/activities" title="Zhihu &rarr; https://www.zhihu.com/people/zheng-bo-33-3/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-university"></i>Zhihu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.instagram.com/bobobiubiubiubiu/" title="Instagram &rarr; https://www.instagram.com/bobobiubiubiubiu/" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、环境搭建"><span class="nav-number">1.</span> <span class="nav-text">一、环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装express"><span class="nav-number">1.1.</span> <span class="nav-text">1、安装express</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、控制台输出端口信息"><span class="nav-number">1.2.</span> <span class="nav-text">2、控制台输出端口信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、代码自动刷新"><span class="nav-number">1.3.</span> <span class="nav-text">3、代码自动刷新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、与微信服务器“配对”"><span class="nav-number">2.</span> <span class="nav-text">二、与微信服务器“配对”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、响应用户发来的消息"><span class="nav-number">3.</span> <span class="nav-text">三、响应用户发来的消息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、自定义菜单"><span class="nav-number">4.</span> <span class="nav-text">四、自定义菜单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获取access-token"><span class="nav-number">4.1.</span> <span class="nav-text">1、获取access_token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、配置自定义菜单"><span class="nav-number">4.2.</span> <span class="nav-text">2、配置自定义菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、接收菜单点击事件"><span class="nav-number">4.3.</span> <span class="nav-text">3、接收菜单点击事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、部署到正式的公众号"><span class="nav-number">5.</span> <span class="nav-text">五、部署到正式的公众号</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Godbobo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">24k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">41 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+  </div>
+<script src="/js/heart.js"></script>
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+  
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+  
+  <script defer src="/lib/three/three.min.js"></script>
+
+  
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'FkAoaWugMknhSEXfUtqg0s8V-gzGzoHsz',
+    appKey: '54yJVzWEjeHxJMChYSasHSjV',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</body>
+</html>
