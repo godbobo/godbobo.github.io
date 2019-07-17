@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+  <meta name="google-site-verification" content="mZLxF48d2ip8QF6BieklFpBeCAVvBu6K3dulAYVYMSY">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+  <meta name="description" content="上次微信公众号制作记账功能（一）把nodejs的环境搭好了，并且可以简单地回复用户地信息了，那么接下来就要正式实现我们地功能了。 为了方便大家查看，也方便大家自己部署到公众号上，我把代码放到github上了，有兴趣可以去看一下。 一、功能分发因为我的订阅号的权限十分有限，那么基本上就只能靠用户的输入来猜测命令了，打开/routes/wx.js，找到处理普通文字消息的代码，进行如下修改： 12345">
+<meta name="keywords" content="微信开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信公众号制作记账功能（二）">
+<meta property="og:url" content="https://godbobo.github.io/2019/07/17/wechat-account-02/index.html">
+<meta property="og:site_name" content="郑博的博客">
+<meta property="og:description" content="上次微信公众号制作记账功能（一）把nodejs的环境搭好了，并且可以简单地回复用户地信息了，那么接下来就要正式实现我们地功能了。 为了方便大家查看，也方便大家自己部署到公众号上，我把代码放到github上了，有兴趣可以去看一下。 一、功能分发因为我的订阅号的权限十分有限，那么基本上就只能靠用户的输入来猜测命令了，打开/routes/wx.js，找到处理普通文字消息的代码，进行如下修改： 12345">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/07/17/5d2ed79ec3b9399820.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/17/5d2edad30427c47415.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/17/5d2ee305ec3e220680.png">
+<meta property="og:updated_time" content="2019-07-17T09:07:47.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信公众号制作记账功能（二）">
+<meta name="twitter:description" content="上次微信公众号制作记账功能（一）把nodejs的环境搭好了，并且可以简单地回复用户地信息了，那么接下来就要正式实现我们地功能了。 为了方便大家查看，也方便大家自己部署到公众号上，我把代码放到github上了，有兴趣可以去看一下。 一、功能分发因为我的订阅号的权限十分有限，那么基本上就只能靠用户的输入来猜测命令了，打开/routes/wx.js，找到处理普通文字消息的代码，进行如下修改： 12345">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/17/5d2ed79ec3b9399820.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="郑博的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://godbobo.github.io/2019/07/17/wechat-account-02/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>微信公众号制作记账功能（二） | 郑博的博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f333ed4a20ac94fa7e29c77f42511df2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">郑博的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">人生如梦未醒时，梦如人生我是谁</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言板">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/message-board/" rel="section"><i class="menu-item-icon fa fa-fw fa-inbox"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2019/07/17/wechat-account-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godbobo">
+      <meta itemprop="description" content="红墙白雪，要你喜欢，怎能忘记">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="郑博的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信公众号制作记账功能（二）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-17 17:07:47" itemprop="dateCreated datePublished" datetime="2019-07-17T17:07:47+08:00">2019-07-17</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/好多坑/" itemprop="url" rel="index"><span itemprop="name">好多坑</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/17/wechat-account-02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/17/wechat-account-02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/07/17/wechat-account-02/" class="post-meta-item leancloud_visitors" data-flag-title="微信公众号制作记账功能（二）">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">6.5k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">11 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上次<a href="https://godbobo.github.io/2019/07/16/wechat-account-01/">微信公众号制作记账功能（一）</a>把nodejs的环境搭好了，并且可以简单地回复用户地信息了，那么接下来就要正式实现我们地功能了。</p>
+<p>为了方便大家查看，也方便大家自己部署到公众号上，我把代码放到<a href="https://github.com/godbobo/wx" target="_blank" rel="noopener">github</a>上了，有兴趣可以去看一下。</p>
+<h1 id="一、功能分发"><a href="#一、功能分发" class="headerlink" title="一、功能分发"></a>一、功能分发</h1><p>因为我的订阅号的权限十分有限，那么基本上就只能靠用户的输入来猜测命令了，打开<code>/routes/wx.js</code>，找到处理普通文字消息的代码，进行如下修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断消息类型</span></span><br><span class="line">    <span class="keyword">if</span> (json.xml.MsgType === <span class="string">'text'</span>) &#123;</span><br><span class="line">      <span class="comment">// 普通文字消息</span></span><br><span class="line">      moneyManager.doQuery(json.xml).then(<span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!msg) &#123;</span><br><span class="line">          tempBody.xml.Content = <span class="string">'你好,我在努力进步中哦...'</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          tempBody.xml.Content = msg</span><br><span class="line">        &#125;</span><br><span class="line">        resbody = jParser.parse(tempBody)</span><br><span class="line">        res.send(resbody)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1、链式调用模块"><a href="#1、链式调用模块" class="headerlink" title="1、链式调用模块"></a>1、链式调用模块</h2><p>首先我的需求是不止有记账这一种功能，可以想见，那么多命令，如果都在<code>wx.js</code>里判断，那以后光找功能就要找好久。</p>
+<p>我的思路是，将命令划分为几个模块，然后每个模块有自己专门的命令分发方法，每个模块处理完之后，<code>wx.js</code>就只负责将处理的结果返回给用户。</p>
+<p>那么怎么判断这个命令属于哪个模块呢？我的想法是利用Promise的链式调用，如果上一个模块没有返回值，就执行下一个模块的命令分发，直至匹配到一个模块。类似下面这种方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">modelA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">modelB</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">modelA().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (!res) &#123;</span><br><span class="line">        <span class="keyword">return</span> modelB()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>目前只定义了一个模块，暂时看不出效果，不过后面我会定义一个默认模块，即若前面的模块都没有匹配到命令时，进入该模块返回一个默认的回复信息。</p>
+<h2 id="2、命令识别"><a href="#2、命令识别" class="headerlink" title="2、命令识别"></a>2、命令识别</h2><blockquote>
+<p>人工智能离用户很近，但离开发者很远~</p>
+</blockquote>
+<p>首先，记账模块有三个子功能：记账、查询账单、统计，而且记账时我想让用户直接输入，因为输入就已经够麻烦了，不能再增加步骤了。</p>
+<p>那么在分发的入口就先去匹配固定的命令，如果没有匹配到，再去匹配记账这个随机性很大的命令。而在匹配记账的过程中，我用的是比较笨的方法，定义一个用户可能会输入的数组，然后再去匹配。</p>
+<p>下面放上代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /service/money.js</span></span><br><span class="line"><span class="keyword">const</span> keywords = [ <span class="string">'吃饭'</span>, <span class="string">'购物'</span>, <span class="string">'工资'</span>, <span class="string">'日用'</span>, <span class="string">'交通'</span>, <span class="string">'零食'</span>, <span class="string">'运动'</span>, <span class="string">'娱乐'</span>, <span class="string">'通讯'</span>, <span class="string">'服饰'</span>, <span class="string">'住房'</span>, <span class="string">'居家'</span>, <span class="string">'社交'</span>, <span class="string">'旅行'</span>, <span class="string">'烟酒'</span>, <span class="string">'数码'</span>, <span class="string">'医疗'</span>, <span class="string">'书籍'</span>, <span class="string">'礼物'</span>, <span class="string">'快递'</span>, <span class="string">'水果'</span>, <span class="string">'蔬菜'</span>, <span class="string">'亲友'</span>, <span class="string">'彩票'</span>, <span class="string">'捐赠'</span>, <span class="string">'维修'</span>, <span class="string">'办公'</span>, <span class="string">'宠物'</span>, <span class="string">'学习'</span>, <span class="string">'汽车'</span>, <span class="string">'美容'</span>, <span class="string">'兼职'</span>, <span class="string">'理财'</span>, <span class="string">'礼金'</span>, <span class="string">'早餐'</span>, <span class="string">'午餐'</span>, <span class="string">'晚餐'</span>, <span class="string">'早饭'</span>, <span class="string">'午饭'</span>, <span class="string">'晚饭'</span>]</span><br><span class="line"><span class="keyword">const</span> mt = [<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 功能分发</span></span><br><span class="line"><span class="keyword">const</span> doQuery = <span class="function">(<span class="params">payload</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 在此处比较数量是否一致，防止输入时出错</span></span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'记账关键词与盈亏数量对比：'</span>, keywords.length, mt.length)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (payload.Content === <span class="string">'账单'</span>) &#123;</span><br><span class="line">      queryBill(payload).then(<span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(msg)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (payload.Content === <span class="string">'统计'</span>) &#123;</span><br><span class="line">      tongji(payload).then(<span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(msg)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 记账</span></span><br><span class="line">      addBill(payload).then(<span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(msg)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 记账</span></span><br><span class="line"><span class="keyword">const</span> addBill = <span class="function">(<span class="params">&#123;FromUserName, CreateTime, Content, MsgId&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">-1</span></span><br><span class="line">    keywords.some(<span class="function">(<span class="params">item, idx</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (Content.indexOf(item) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        index = idx</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> price = <span class="built_in">parseFloat</span>(Content.replace(keywords[index], <span class="string">''</span>))</span><br><span class="line">      <span class="keyword">if</span> (!price) &#123;</span><br><span class="line">        res(<span class="string">'错误提示：未输入金额或金额格式错误\n所属模块：[记账]'</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> tempTxt = mt[index] &gt; <span class="number">0</span> ? <span class="string">'收入'</span> : <span class="string">'支出'</span></span><br><span class="line">        retMsg = <span class="string">`记录成功！\n<span class="subst">$&#123;keywords[index]&#125;</span> <span class="subst">$&#123;tempTxt&#125;</span> <span class="subst">$&#123;price&#125;</span>元`</span></span><br><span class="line">        res(retMsg)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询账单</span></span><br><span class="line"><span class="keyword">const</span> queryBill = <span class="function">(<span class="params">&#123;FromUserName, CreateTime&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">'您的账单如下:\n'</span></span><br><span class="line">      res(str)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 统计</span></span><br><span class="line"><span class="keyword">const</span> tongji = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  doQuery</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我将模块都放在<code>service</code>目录，以便统一管理。上面的代码<code>Promise</code>用得总感觉有点别扭，但还是可以正常运行的，等哪天开窍了估计就能写出更优雅的代码了。</p>
+<h1 id="二、数据存储"><a href="#二、数据存储" class="headerlink" title="二、数据存储"></a>二、数据存储</h1><p>记账记账，如果不存下来，那还叫什么记账？</p>
+<h2 id="1、简单介绍"><a href="#1、简单介绍" class="headerlink" title="1、简单介绍"></a>1、简单介绍</h2><p>nodejs在数据存储方面的选择其实有很多种，但限于我的服务器很菜，我只能选择基于文件系统的数据库了，那就排除掉MySql、Redis。然后我听人推荐LevelDb，好家伙，感觉比Redis难用多了，我就想简单地放个对象数组，放了大半天都失败了，还读取不到！然后又把目光放到Sqlite3上面，又是一个好家伙，我还要在代码中定义数据结构，这还是我印象中地js吗？</p>
+<p>就在我彷徨不所知时，一道闪电击中了我的脑袋，<code>nedb</code>!赶忙在github上搜索，竟然搜到了这个数据库，然后赶紧试试能不能用，好不好用。用过之后，我只有一个感觉，丝滑~</p>
+<p>我就稍微介绍一下它吧（太丝滑了，必须得多说几句啊），nedb是mongoDb的一个子集，mongoDb相信大家会有所耳闻，而子集，就是将mongoDb的常用操作抽取出来了，所以用着是真的顺手。啥也不说了，先放链接：</p>
+<p><a href="https://github.com/louischatriot/nedb" target="_blank" rel="noopener">https://github.com/louischatriot/nedb</a></p>
+<p><img src="https://i.loli.net/2019/07/17/5d2ed79ec3b9399820.png" alt></p>
+<p>这是我生成的数据库文件，没错，只有一个文件，文件内容肉眼可读！一个字，强啊。</p>
+<h2 id="2、应用"><a href="#2、应用" class="headerlink" title="2、应用"></a>2、应用</h2><p>在<code>nedb</code>中，一个表就是一个文件（个人肤浅见解），因此管理表的任务就交给我们了。</p>
+<p>我的做法是专门用一个文件<code>/service/db.js</code>去管理数据库信息:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Datastore = <span class="built_in">require</span>(<span class="string">'nedb'</span>)</span><br><span class="line"><span class="comment">// 生成nedb的实例并自动打开数据库</span></span><br><span class="line"><span class="keyword">var</span> moneyDb = <span class="keyword">new</span> Datastore(&#123; <span class="attr">filename</span>: <span class="string">'moneyLog.db'</span>, <span class="attr">autoload</span>: <span class="literal">true</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里我考虑到项目中不止会用到一张表，就用这种方式导出多个nedb的操作对象</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  moneyDb</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>/service/money.js</code>中的用法就是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造账单记录</span></span><br><span class="line"><span class="keyword">const</span> bill = &#123;</span><br><span class="line">    msgId: MsgId,</span><br><span class="line">    type: keywords[index],</span><br><span class="line">    yk: mt[index],</span><br><span class="line">    price: price,</span><br><span class="line">    openid: FromUserName,</span><br><span class="line">    recordTime: CreateTime</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 没错，就这么简单就插入了</span></span><br><span class="line">db.moneyDb.insert(bill)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'您的账单如下:\n'</span></span><br><span class="line"><span class="comment">// 查询也很简单，还可以排序，具体的可以看github上的文档</span></span><br><span class="line">db.moneyDb.find(&#123;<span class="attr">openid</span>: FromUserName&#125;).sort(&#123;<span class="attr">recordTime</span>: <span class="number">-1</span>&#125;).exec(<span class="function">(<span class="params">err, docs</span>) =&gt;</span> &#123;</span><br><span class="line">	docs.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> d = dateUtil.getNowSimpleFormatDate(<span class="keyword">new</span> <span class="built_in">Date</span>(CreateTime * <span class="number">1000</span>))</span><br><span class="line">	<span class="keyword">const</span> s = <span class="string">`[<span class="subst">$&#123;d&#125;</span>] <span class="subst">$&#123;item.type&#125;</span> <span class="subst">$&#123;item.price&#125;</span>元\n`</span></span><br><span class="line">	str += s</span><br><span class="line">&#125;)</span><br><span class="line">res(str)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>做到这一步之后，就可以运行查看效果了。</p>
+<p><img src="https://i.loli.net/2019/07/17/5d2edad30427c47415.png" alt></p>
+<p>可以看到，这里我专门取消关注后再新增的记录，一样可以获取到以前的记录。</p>
+<p>当然，这个功能还有许多地方要完善，比如支持查询啦，支持翻页啦，这些就放到下次再讲吧。</p>
+<h1 id="三、自适应环境"><a href="#三、自适应环境" class="headerlink" title="三、自适应环境"></a>三、自适应环境</h1><p>这个标题实在想不到既简短又直击要害的了…</p>
+<p>通常情况下，我们的开发环境和生产环境的配置信息是有所不同的，那我们每次切换环境都要重新手动修改配置文件吗？</p>
+<p>这当然不行。</p>
+<p>以前这种区分开发环境和生产环境的功能也用过，不过都是别人写好的模板，这次总算自己实现了一下。</p>
+<p>原理很简单，我们的系统都是可以设置环境变量的，而我们平常运行项目执行的<code>yarn start</code>或者<code>npm start</code>其实都是执行的<code>package.json</code>中配置的<code>scripts: {&quot;start&quot;: &quot;node xxxx.js&quot;}</code>这种命令。那我们就可以在执行这个命令之前先将系统的环境变量设为开发环境或生产环境，然后程序里读取当前是开发环境还是生产环境，然后加载不同的配置文件就可以了。</p>
+<p>首先，了解一下设置环境变量的方式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows系统</span></span><br><span class="line"><span class="built_in">set</span> NODE_ENV=development</span><br><span class="line"><span class="comment"># Linux/Mac系统</span></span><br><span class="line"><span class="built_in">export</span> NODE_ENV=development</span><br></pre></td></tr></table></figure>
+
+<p>不同操作系统的命令不一样，这确实给我造成了不小的困扰，但也只能在不同的系统上再手动改一下了。</p>
+<p>然后修改<code>packages.json</code>：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 开发环境是windows，因此先设置为windows的命令</span><br><span class="line">"scripts": &#123;</span><br><span class="line">    "dev": "set NODE_ENV=development&amp;&amp; nodemon ./bin/www",</span><br><span class="line">    "prod": "set NODE_ENV=production&amp;&amp; nodemon ./bin/www"</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>上面用到了<code>&amp;&amp;</code>用于在同一行内区分两条命令，同时要注意的是，<strong><code>&amp;&amp;</code>前面不能用空格分开！</strong>，这导致我一直无法区分开发环境和生产环境。</p>
+<p>这样修改之后，在js代码中，就可以通过以下代码进行判断：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样设置完成基本上就可以了，但因为我想把代码放到github上让大家参考，又不能把自己的密钥之类的放在上面，那么我就还需要想点褶子。</p>
+<p>首先，项目中要将开发环境和生产环境的配置文件分开，同时要将私密信息单独创建一个文件，还要有一个文件专门放不会变的配置信息。因此，我的<code>config</code>文件夹就变成了这个样子：</p>
+<p><img src="https://i.loli.net/2019/07/17/5d2ee305ec3e220680.png" alt></p>
+<p>其中<code>*.self.js</code>是我配置私密信息的地方，然后在<code>dev.js</code>中获取，最后在<code>index.js</code>中判断环境后获取对应的配置信息。然后，我再将<code>*.self.js</code>的文件设置为忽略上传就可以了。不过这样的话我又要去写<code>README.md</code>了。。。</p>
+<p>下面附上<code>index.js</code>中区分环境的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> devConfig = <span class="built_in">require</span>(<span class="string">'./dev'</span>)</span><br><span class="line"><span class="keyword">const</span> prodConfig = <span class="built_in">require</span>(<span class="string">'./prod'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 区分开发环境和生产环境</span></span><br><span class="line"><span class="keyword">const</span> env = process.env.NODE_ENV || <span class="string">'development'</span></span><br><span class="line"><span class="keyword">var</span> isDev = env === <span class="string">'development'</span></span><br><span class="line"><span class="comment">// 每次启动时会打印当前运行环境，更好的提醒使用者</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'当前运行环境：'</span>,env)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> appid = isDev ? devConfig.appid : prodConfig.appid</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在做这个记账功能的时候，数据库的选择真的是卡了我好长时间，还好有那一道闪电~</p>
+<p>最后，希望大家可以关注一下我的公众号，体验一下微信记账的感觉~</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Godbobo wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Godbobo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Godbobo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/微信开发/" rel="tag"><i class="fa fa-tag"></i> 微信开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/wechat-account-01/" rel="next" title="微信公众号制作记账功能（一）">
+                <i class="fa fa-chevron-left"></i> 微信公众号制作记账功能（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Godbobo">
+            
+              <p class="site-author-name" itemprop="name">Godbobo</p>
+              <div class="site-description motion-element" itemprop="description">红墙白雪，要你喜欢，怎能忘记</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="GitHub &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bobobiubiubiubiu@gmail.com" title="E-Mail &rarr; mailto:bobobiubiubiubiu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056965815024/info" title="Weibo &rarr; https://weibo.com/p/1005056965815024/info" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="Twitter &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/zheng-bo-33-3/activities" title="Zhihu &rarr; https://www.zhihu.com/people/zheng-bo-33-3/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-university"></i>Zhihu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.instagram.com/bobobiubiubiubiu/" title="Instagram &rarr; https://www.instagram.com/bobobiubiubiubiu/" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、功能分发"><span class="nav-number">1.</span> <span class="nav-text">一、功能分发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、链式调用模块"><span class="nav-number">1.1.</span> <span class="nav-text">1、链式调用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、命令识别"><span class="nav-number">1.2.</span> <span class="nav-text">2、命令识别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、数据存储"><span class="nav-number">2.</span> <span class="nav-text">二、数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、简单介绍"><span class="nav-number">2.1.</span> <span class="nav-text">1、简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、应用"><span class="nav-number">2.2.</span> <span class="nav-text">2、应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、自适应环境"><span class="nav-number">3.</span> <span class="nav-text">三、自适应环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Godbobo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">31k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">51 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+  </div>
+<script src="/js/heart.js"></script>
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+  
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+  
+  <script defer src="/lib/three/three.min.js"></script>
+
+  
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'FkAoaWugMknhSEXfUtqg0s8V-gzGzoHsz',
+    appKey: '54yJVzWEjeHxJMChYSasHSjV',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</body>
+</html>
