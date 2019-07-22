@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/07/18/5d2fc22c74dab45935.png">
 <meta property="og:image" content="https://i.loli.net/2019/07/18/5d2fc3586244997545.png">
 <meta property="og:image" content="https://i.loli.net/2019/07/22/5d3554528a9f672026.png">
-<meta property="og:updated_time" content="2019-07-22T06:17:22.496Z">
+<meta property="og:updated_time" content="2019-07-22T12:22:28.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信公众号制作记账功能（三）">
 <meta name="twitter:description" content="上一篇文章基本上把技术上的实现都讲了一遍，证明实现这个功能是切实可行的。下面就对建好的服务雏形进行完善和增加功能。 先放这个系列的文章： 微信公众号制作记账功能（一） 微信公众号制作记账功能（二） 一、默认回复前面设置的默认回复就是简单的一句话，一点都不够智能，当然了，我再怎么改造，只要不用到聊天机器人这种功能，那就不会特别智能。但聊天机器人的API都是要收费的哎，而如果我用python在服务器上">
@@ -400,10 +400,14 @@
                 
               
 
-              <time title="创建时间：2019-07-22 14:17:22" itemprop="dateCreated datePublished" datetime="2019-07-22T14:17:22+08:00">2019-07-22</time>
+              <time title="创建时间：2019-07-22 14:17:22 / 修改时间：20:22:28" itemprop="dateCreated datePublished" datetime="2019-07-22T14:17:22+08:00">2019-07-22</time>
             </span>
           
 
+          
+            
+
+            
           
 
           
@@ -466,7 +470,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">12k</span>
+              <span title="本文字数">14k</span>
             </span>
           
 
@@ -478,7 +482,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">21 分钟</span>
+              <span title="阅读时长">24 分钟</span>
             </span>
           
 
@@ -571,6 +575,12 @@
 
 <p>最后的实现效果就是：</p>
 <p><img src="https://i.loli.net/2019/07/22/5d3554528a9f672026.png" alt></p>
+<p>当然，这样只是实现了记录的功能，那么自动执行任务还没有做。我的预想是每晚3点定时去判断每个用户当天的收支预设信息，如果是当天，则向账单中添加记录。又因为项目中不可能只有这一个定时器，因此干脆一了百了，再做一个定时器管理的功能。</p>
+<p>js中与定时有关的也就是<code>setTimeout</code>和<code>setInterval</code>了，而且现在需要做的也只是定时（整点）执行任务，那么我们就可以计算当前时间距离下一个整点还有多久，然后<code>setTimeout</code>到下一个整点（也可以是下下个整点，计算时间并相加即可），启动<code>setInterval</code>执行我们真正需要执行的任务。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> presetTimer = <span class="built_in">require</span>(<span class="string">'./presetTimer'</span>)</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../../config/index'</span>)</span><br><span class="line"><span class="keyword">const</span> stepTimer = <span class="built_in">require</span>(<span class="string">'./stepTimer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> timeDefine = config.taskTimerConfig</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> init = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 测试功能</span></span><br><span class="line">  <span class="comment">// test()</span></span><br><span class="line">  <span class="comment">// 一天的时间 毫秒数</span></span><br><span class="line">  <span class="keyword">const</span> dayTimeStamp = <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">1000</span></span><br><span class="line">  <span class="comment">// 月固定开支</span></span><br><span class="line">  startOfHourSchedule(timeDefine.presetTime, dayTimeStamp, presetTimer.doSchedule)</span><br><span class="line">  <span class="comment">// 定时清除缓存步骤消息</span></span><br><span class="line">  setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    stepTimer.doSchedule()</span><br><span class="line">  &#125;, timeDefine.clearStepMsgTime);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  presetTimer.doSchedule()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义在每天的某个小时执行的任务</span></span><br><span class="line"><span class="comment"> * @param &#123;Number&#125; targetHour 目标起始时间</span></span><br><span class="line"><span class="comment"> * @param &#123;Number&#125; intervalTime 循环时间</span></span><br><span class="line"><span class="comment"> * @param &#123;Function&#125; fun 要执行的函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> startOfHourSchedule = <span class="function">(<span class="params">targetHour, intervalTime, fun</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (targetHour &lt; <span class="number">0</span> || targetHour &gt; <span class="number">23</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">const</span> nowtimeStamp = date.getTime()</span><br><span class="line">  <span class="keyword">const</span> nowHour = date.getHours()</span><br><span class="line">  date.setHours(nowHour + <span class="number">1</span>)</span><br><span class="line">  date.setMinutes(<span class="number">0</span>)</span><br><span class="line">  date.setSeconds(<span class="number">0</span>)</span><br><span class="line">  date.setMilliseconds(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> nextHourTimeStamp = date.getTime()</span><br><span class="line">  <span class="keyword">const</span> diffTime = nextHourTimeStamp - nowtimeStamp</span><br><span class="line">  <span class="keyword">const</span> hour = <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span></span><br><span class="line">  <span class="keyword">let</span> time = <span class="number">0</span></span><br><span class="line">  <span class="keyword">if</span> (nowHour &lt; targetHour ) &#123;</span><br><span class="line">    <span class="comment">// 当前时间小于预计时间</span></span><br><span class="line">    time = targetHour - nowHour <span class="number">-1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    time = <span class="number">24</span> - (nowHour - targetHour + <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'将于'</span> + <span class="built_in">Math</span>.ceil((diffTime + hour * time) / <span class="number">1000</span> / <span class="number">60</span>) + <span class="string">'分钟后执行定时任务'</span> + i++)</span><br><span class="line">  <span class="comment">// 开启24个settiemout  0-23 分别对应下n个整点时间</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    fun()</span><br><span class="line">    setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fun()</span><br><span class="line">    &#125;, intervalTime);</span><br><span class="line">  &#125;, diffTime + hour * time);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  init</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样写了之后，我们在项目的<code>app.js</code>中调用这个文件的<code>init</code>方法即可。</p>
+<p>然后对于具体的固定收支添加账单的逻辑就比较简单了，就不再放到上面了，有兴趣的可以到我的github上看源码。</p>
 
       
     </div>
@@ -921,7 +931,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">43k</span>
+    <span title="站点总字数">45k</span>
   
 
   
@@ -932,7 +942,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:12</span>
+    <span title="站点阅读时长">1:15</span>
   
 </div>
 
