@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godbobo.github.io/"/>
-  <updated>2019-07-22T12:22:28.507Z</updated>
+  <updated>2019-09-24T10:44:00.428Z</updated>
   <id>https://godbobo.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS快速安装SSR</title>
+    <link href="https://godbobo.github.io/2019/09/24/CentOS%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85SSR/"/>
+    <id>https://godbobo.github.io/2019/09/24/CentOS快速安装SSR/</id>
+    <published>2019-09-24T10:44:00.000Z</published>
+    <updated>2019-09-24T10:44:00.428Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><h2 id="1、下载安装包"><a href="#1、下载安装包" class="headerlink" title="1、下载安装包"></a>1、下载安装包</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br></pre></td></tr></table></figure><h2 id="2、修改安装脚本权限"><a href="#2、修改安装脚本权限" class="headerlink" title="2、修改安装脚本权限"></a>2、修改安装脚本权限</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x shadowsocksR.sh</span><br></pre></td></tr></table></figure><h2 id="3、配置SSR"><a href="#3、配置SSR" class="headerlink" title="3、配置SSR"></a>3、配置SSR</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br><span class="line">// 之后会让配置密码等信息，我们自定义一下密码之后，剩下的都直接回车用默认值就行。</span><br></pre></td></tr></table></figure><p>配置信息一定要保存起来，否则找起来太麻烦了。。</p><p><img src="https://i.loli.net/2019/09/19/bDftyc3PxHNzqj1.png" alt></p><h1 id="开启BBR加速"><a href="#开启BBR加速" class="headerlink" title="开启BBR加速"></a>开启BBR加速</h1><h2 id="1、下载安装包-1"><a href="#1、下载安装包-1" class="headerlink" title="1、下载安装包"></a>1、下载安装包</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</span><br></pre></td></tr></table></figure><h2 id="2、获取权限"><a href="#2、获取权限" class="headerlink" title="2、获取权限"></a>2、获取权限</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x bbr.sh</span><br></pre></td></tr></table></figure><h2 id="3、开始安装"><a href="#3、开始安装" class="headerlink" title="3、开始安装"></a>3、开始安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./bbr.sh</span><br><span class="line">// 这一步之后会让重启，确定即可</span><br></pre></td></tr></table></figure><h2 id="4、验证安装状态"><a href="#4、验证安装状态" class="headerlink" title="4、验证安装状态"></a>4、验证安装状态</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure><blockquote><p>BBR 加速有点坑，开启就不能连接了，建议不要开启！！！</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;安装步骤&quot;&gt;&lt;a href=&quot;#安装步骤&quot; class=&quot;headerlink&quot; title=&quot;安装步骤&quot;&gt;&lt;/a&gt;安装步骤&lt;/h1&gt;&lt;h2 id=&quot;1、下载安装包&quot;&gt;&lt;a href=&quot;#1、下载安装包&quot; class=&quot;headerlink&quot; title=&quot;1、下
+      
+    
+    </summary>
+    
+      <category term="用就对了" scheme="https://godbobo.github.io/categories/%E7%94%A8%E5%B0%B1%E5%AF%B9%E4%BA%86/"/>
+    
+    
+      <category term="linux" scheme="https://godbobo.github.io/tags/linux/"/>
+    
+      <category term="ssr" scheme="https://godbobo.github.io/tags/ssr/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CenOS 快速安装 Nginx</title>
+    <link href="https://godbobo.github.io/2019/09/24/CenOS-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85-Nginx/"/>
+    <id>https://godbobo.github.io/2019/09/24/CenOS-快速安装-Nginx/</id>
+    <published>2019-09-24T10:41:24.000Z</published>
+    <updated>2019-09-24T10:44:09.898Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><h2 id="1、将nginx放到yum-repro库中"><a href="#1、将nginx放到yum-repro库中" class="headerlink" title="1、将nginx放到yum repro库中"></a>1、将nginx放到yum repro库中</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure><h2 id="2、查看nginx信息"><a href="#2、查看nginx信息" class="headerlink" title="2、查看nginx信息"></a>2、查看nginx信息</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info nginx</span><br></pre></td></tr></table></figure><h2 id="3、使用yum安装ngnix"><a href="#3、使用yum安装ngnix" class="headerlink" title="3、使用yum安装ngnix"></a>3、使用yum安装ngnix</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br><span class="line">// 中途需要输入 y 确认安装</span><br></pre></td></tr></table></figure><h2 id="4、启动nginx"><a href="#4、启动nginx" class="headerlink" title="4、启动nginx"></a>4、启动nginx</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx start</span><br></pre></td></tr></table></figure><h2 id="5、查看nginx版本"><a href="#5、查看nginx版本" class="headerlink" title="5、查看nginx版本"></a>5、查看nginx版本</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure><h2 id="6、访问nginx"><a href="#6、访问nginx" class="headerlink" title="6、访问nginx"></a>6、访问nginx</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i localhost</span><br></pre></td></tr></table></figure><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="1、nginx配置文件目录"><a href="#1、nginx配置文件目录" class="headerlink" title="1、nginx配置文件目录"></a>1、nginx配置文件目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /etc/nginx/</span><br></pre></td></tr></table></figure><h2 id="2、修改nginx配置文件"><a href="#2、修改nginx配置文件" class="headerlink" title="2、修改nginx配置文件"></a>2、修改nginx配置文件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/default.conf</span><br></pre></td></tr></table></figure><h2 id="3、重启服务"><a href="#3、重启服务" class="headerlink" title="3、重启服务"></a>3、重启服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx -s reload</span><br></pre></td></tr></table></figure><h2 id="4、停止服务"><a href="#4、停止服务" class="headerlink" title="4、停止服务"></a>4、停止服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx –s stop</span><br></pre></td></tr></table></figure><h2 id="5、测试配置文件是否正常"><a href="#5、测试配置文件是否正常" class="headerlink" title="5、测试配置文件是否正常"></a>5、测试配置文件是否正常</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx –t</span><br></pre></td></tr></table></figure><h1 id="外网不能访问的问题"><a href="#外网不能访问的问题" class="headerlink" title="外网不能访问的问题"></a>外网不能访问的问题</h1><p>查看并关闭防火墙</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld.service</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br><span class="line">systemctl status firewalld.service</span><br></pre></td></tr></table></figure><h1 id="CenOS-服务常用命令"><a href="#CenOS-服务常用命令" class="headerlink" title="CenOS 服务常用命令"></a>CenOS 服务常用命令</h1><h2 id="1、启动一个服务"><a href="#1、启动一个服务" class="headerlink" title="1、启动一个服务"></a>1、启动一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld.service</span><br></pre></td></tr></table></figure><h2 id="2、关闭一个服务"><a href="#2、关闭一个服务" class="headerlink" title="2、关闭一个服务"></a>2、关闭一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure><h2 id="3、重启一个服务"><a href="#3、重启一个服务" class="headerlink" title="3、重启一个服务"></a>3、重启一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld.service</span><br></pre></td></tr></table></figure><h2 id="4、显示服务状态"><a href="#4、显示服务状态" class="headerlink" title="4、显示服务状态"></a>4、显示服务状态</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld.service</span><br></pre></td></tr></table></figure><h2 id="5、开机时启用一个服务"><a href="#5、开机时启用一个服务" class="headerlink" title="5、开机时启用一个服务"></a>5、开机时启用一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> firewalld.service</span><br></pre></td></tr></table></figure><h2 id="6、开机时禁用一个服务"><a href="#6、开机时禁用一个服务" class="headerlink" title="6、开机时禁用一个服务"></a>6、开机时禁用一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure><h2 id="7、查看服务是否开机启动"><a href="#7、查看服务是否开机启动" class="headerlink" title="7、查看服务是否开机启动"></a>7、查看服务是否开机启动</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled firewalld.service;<span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure><h2 id="8、查看已启动的服务列表"><a href="#8、查看已启动的服务列表" class="headerlink" title="8、查看已启动的服务列表"></a>8、查看已启动的服务列表</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files|grep enabled</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;安装过程&quot;&gt;&lt;a href=&quot;#安装过程&quot; class=&quot;headerlink&quot; title=&quot;安装过程&quot;&gt;&lt;/a&gt;安装过程&lt;/h1&gt;&lt;h2 id=&quot;1、将nginx放到yum-repro库中&quot;&gt;&lt;a href=&quot;#1、将nginx放到yum-repro库中&quot; c
+      
+    
+    </summary>
+    
+      <category term="用就对了" scheme="https://godbobo.github.io/categories/%E7%94%A8%E5%B0%B1%E5%AF%B9%E4%BA%86/"/>
+    
+    
+      <category term="nginx" scheme="https://godbobo.github.io/tags/nginx/"/>
+    
+      <category term="linux" scheme="https://godbobo.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>微信公众号制作记账功能（三）</title>
