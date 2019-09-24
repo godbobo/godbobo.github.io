@@ -103,18 +103,23 @@
 </script>
 
 
-  <meta name="description" content="安装过程1、将nginx放到yum repro库中1rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm  2、查看nginx信息1yum info nginx  3、使用yum安装ngnix12yum install nginx// 中途需要输入 y">
-<meta name="keywords" content="nginx,linux">
+  <meta name="description" content="FRP内网穿透一站式配置场景1：我有一台配置很差的服务器，也有一台放在公司可以一直开机的电脑，我想跑一个springboot项目。 场景2:我要做微信开发，我必须要有一个公网可以访问的域名。 针对这两种场景，要怎么做呢？当然是使用内网穿透，而市面上好的内网穿透工具收费，免费的每次建立的域名都是随机的，那能不能自己搭一个内网穿透服务呢？当然可以！ 一、FRP安装frp是一款开源的内网穿透软件，可以在">
+<meta name="keywords" content="frp,内网穿透">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CenOS 快速安装 Nginx">
-<meta property="og:url" content="https://godbobo.github.io/2019/09/24/CenOS-快速安装-Nginx/index.html">
+<meta property="og:title" content="FRP内网穿透一站式配置">
+<meta property="og:url" content="https://godbobo.github.io/2019/09/24/frp-01/index.html">
 <meta property="og:site_name" content="郑博的博客">
-<meta property="og:description" content="安装过程1、将nginx放到yum repro库中1rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm  2、查看nginx信息1yum info nginx  3、使用yum安装ngnix12yum install nginx// 中途需要输入 y">
+<meta property="og:description" content="FRP内网穿透一站式配置场景1：我有一台配置很差的服务器，也有一台放在公司可以一直开机的电脑，我想跑一个springboot项目。 场景2:我要做微信开发，我必须要有一个公网可以访问的域名。 针对这两种场景，要怎么做呢？当然是使用内网穿透，而市面上好的内网穿透工具收费，免费的每次建立的域名都是随机的，那能不能自己搭一个内网穿透服务呢？当然可以！ 一、FRP安装frp是一款开源的内网穿透软件，可以在">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-24T10:44:09.898Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7691tuilzj318e0ow0xp.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g76a8dubi2j31h00u0k3m.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g76aacvys7j30wa0em0wc.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g76bkv7nowj31dm0j044p.jpg">
+<meta property="og:updated_time" content="2019-09-24T11:55:19.862Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CenOS 快速安装 Nginx">
-<meta name="twitter:description" content="安装过程1、将nginx放到yum repro库中1rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm  2、查看nginx信息1yum info nginx  3、使用yum安装ngnix12yum install nginx// 中途需要输入 y">
+<meta name="twitter:title" content="FRP内网穿透一站式配置">
+<meta name="twitter:description" content="FRP内网穿透一站式配置场景1：我有一台配置很差的服务器，也有一台放在公司可以一直开机的电脑，我想跑一个springboot项目。 场景2:我要做微信开发，我必须要有一个公网可以访问的域名。 针对这两种场景，要怎么做呢？当然是使用内网穿透，而市面上好的内网穿透工具收费，免费的每次建立的域名都是随机的，那能不能自己搭一个内网穿透服务呢？当然可以！ 一、FRP安装frp是一款开源的内网穿透软件，可以在">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7691tuilzj318e0ow0xp.jpg">
 
 
 
@@ -124,7 +129,7 @@
 
   
   
-  <link rel="canonical" href="https://godbobo.github.io/2019/09/24/CenOS-快速安装-Nginx/">
+  <link rel="canonical" href="https://godbobo.github.io/2019/09/24/frp-01/">
 
 
 
@@ -134,7 +139,7 @@
   };
 </script>
 
-  <title>CenOS 快速安装 Nginx | 郑博的博客</title>
+  <title>FRP内网穿透一站式配置 | 郑博的博客</title>
   
 
 
@@ -352,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2019/09/24/CenOS-快速安装-Nginx/">
+    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2019/09/24/frp-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godbobo">
@@ -369,7 +374,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CenOS 快速安装 Nginx
+          <h1 class="post-title" itemprop="name headline">FRP内网穿透一站式配置
 
               
             
@@ -395,14 +400,10 @@
                 
               
 
-              <time title="创建时间：2019-09-24 18:41:24 / 修改时间：18:44:09" itemprop="dateCreated datePublished" datetime="2019-09-24T18:41:24+08:00">2019-09-24</time>
+              <time title="创建时间：2019-09-24 19:55:19" itemprop="dateCreated datePublished" datetime="2019-09-24T19:55:19+08:00">2019-09-24</time>
             </span>
           
 
-          
-            
-
-            
           
 
           
@@ -432,8 +433,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/09/24/CenOS-快速安装-Nginx/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/CenOS-快速安装-Nginx/" itemprop="commentCount"></span>
+                <a href="/2019/09/24/frp-01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/frp-01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -441,7 +442,7 @@
 
           
           
-            <span id="/2019/09/24/CenOS-快速安装-Nginx/" class="post-meta-item leancloud_visitors" data-flag-title="CenOS 快速安装 Nginx">
+            <span id="/2019/09/24/frp-01/" class="post-meta-item leancloud_visitors" data-flag-title="FRP内网穿透一站式配置">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -465,7 +466,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1k</span>
+              <span title="本文字数">3.8k</span>
             </span>
           
 
@@ -477,7 +478,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">2 分钟</span>
+              <span title="阅读时长">6 分钟</span>
             </span>
           
 
@@ -496,46 +497,111 @@
       
 
       
-        <h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><h2 id="1、将nginx放到yum-repro库中"><a href="#1、将nginx放到yum-repro库中" class="headerlink" title="1、将nginx放到yum repro库中"></a>1、将nginx放到yum repro库中</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
+        <h1 id="FRP内网穿透一站式配置"><a href="#FRP内网穿透一站式配置" class="headerlink" title="FRP内网穿透一站式配置"></a>FRP内网穿透一站式配置</h1><p>场景1：我有一台配置很差的服务器，也有一台放在公司可以一直开机的电脑，我想跑一个springboot项目。</p>
+<p>场景2:我要做微信开发，我必须要有一个公网可以访问的域名。</p>
+<p>针对这两种场景，要怎么做呢？当然是使用内网穿透，而市面上好的内网穿透工具收费，免费的每次建立的域名都是随机的，那能不能自己搭一个内网穿透服务呢？当然可以！</p>
+<h2 id="一、FRP安装"><a href="#一、FRP安装" class="headerlink" title="一、FRP安装"></a>一、FRP安装</h2><p>frp是一款开源的内网穿透软件，可以在GitHub上找到：<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">https://github.com/fatedier/frp</a>。</p>
+<p>readme中有中文文档的链接，在release中可以看到最新的版本<code>0.29.0</code> 。其中我需要的是Linux版本的、Windows版本的和Mac版本的，目前我们的电脑大部分都是64位的了，我选择下载的分别是以下几个文件：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7691tuilzj318e0ow0xp.jpg" alt></p>
+<h3 id="1、Linux服务端安装"><a href="#1、Linux服务端安装" class="headerlink" title="1、Linux服务端安装"></a>1、Linux服务端安装</h3><p>我的服务器是CentOS 7，可以直接通过命令下载，也省去了文件上传的步骤：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
 
-<h2 id="2、查看nginx信息"><a href="#2、查看nginx信息" class="headerlink" title="2、查看nginx信息"></a>2、查看nginx信息</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info nginx</span><br></pre></td></tr></table></figure>
+<p>解压文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf frp_0.29.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
 
-<h2 id="3、使用yum安装ngnix"><a href="#3、使用yum安装ngnix" class="headerlink" title="3、使用yum安装ngnix"></a>3、使用yum安装ngnix</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br><span class="line">// 中途需要输入 y 确认安装</span><br></pre></td></tr></table></figure>
+<p> 删除我们不需要的客户端文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> frp_0.29.0_linux_amd64</span><br><span class="line">ls -a</span><br><span class="line">rm frpc</span><br><span class="line">rm frpc.ini</span><br></pre></td></tr></table></figure>
 
-<h2 id="4、启动nginx"><a href="#4、启动nginx" class="headerlink" title="4、启动nginx"></a>4、启动nginx</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>打开服务端配置文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure>
 
-<h2 id="5、查看nginx版本"><a href="#5、查看nginx版本" class="headerlink" title="5、查看nginx版本"></a>5、查看nginx版本</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
+<p>将文件内容换为下面的：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">dashboard_port</span> = <span class="number">7500</span></span><br><span class="line"><span class="attr">token</span> = bobozuihao</span><br><span class="line"><span class="attr">dashboard_user</span> = admin</span><br><span class="line"><span class="attr">dashboard_pwd</span> = bobozuihao</span><br><span class="line"><span class="attr">vhost_http_port</span> = <span class="number">8080</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="6、访问nginx"><a href="#6、访问nginx" class="headerlink" title="6、访问nginx"></a>6、访问nginx</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i localhost</span><br></pre></td></tr></table></figure>
+<p>端口号均采用默认值即可，上面字段的含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bind_port</td>
+<td>服务端口号</td>
+</tr>
+<tr>
+<td>token</td>
+<td>客户端服务器之间的密钥</td>
+</tr>
+<tr>
+<td>dashboard_port</td>
+<td>frp仪表盘端口号</td>
+</tr>
+<tr>
+<td>dashboard_user</td>
+<td>admin</td>
+</tr>
+<tr>
+<td>dashboard_pwd</td>
+<td>仪表盘密码</td>
+</tr>
+<tr>
+<td>vhost_http_port</td>
+<td>web服务代理端口号</td>
+</tr>
+</tbody></table>
+<p>按下<code>esc</code> 键进入命令模式，保存并退出当前文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
 
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="1、nginx配置文件目录"><a href="#1、nginx配置文件目录" class="headerlink" title="1、nginx配置文件目录"></a>1、nginx配置文件目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /etc/nginx/</span><br></pre></td></tr></table></figure>
+<p>然后运行服务端：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps -c frps.ini</span><br></pre></td></tr></table></figure>
 
-<h2 id="2、修改nginx配置文件"><a href="#2、修改nginx配置文件" class="headerlink" title="2、修改nginx配置文件"></a>2、修改nginx配置文件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/default.conf</span><br></pre></td></tr></table></figure>
+<p>此时访问服务端x.x.x.x:7500即可访问FRP仪表盘。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g76a8dubi2j31h00u0k3m.jpg" alt></p>
+<blockquote>
+<p>这张截图是配置过Nginx重定向之后的仪表盘页面</p>
+</blockquote>
+<h3 id="2、Linux服务端后台运行FRP"><a href="#2、Linux服务端后台运行FRP" class="headerlink" title="2、Linux服务端后台运行FRP"></a>2、Linux服务端后台运行FRP</h3><p>在上一节中我们成功运行了FRP，但我们按Ctrl+C退出或关闭SSH窗口后，FRP均会停止运行，此时我们需要使用nohup将其运行在后台。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./frps -c frps.ini &amp;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3、重启服务"><a href="#3、重启服务" class="headerlink" title="3、重启服务"></a>3、重启服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>Ctrl+C关闭nohup并查看后台中是否有FRP：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">jobs</span></span><br><span class="line"><span class="comment"># 下面是显示结果</span></span><br><span class="line">[1]+  Running                 nohup ./frps -c frps.ini &amp;</span><br></pre></td></tr></table></figure>
 
-<h2 id="4、停止服务"><a href="#4、停止服务" class="headerlink" title="4、停止服务"></a>4、停止服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx –s stop</span><br></pre></td></tr></table></figure>
+<h3 id="3、Windows及Mac安装客户端"><a href="#3、Windows及Mac安装客户端" class="headerlink" title="3、Windows及Mac安装客户端"></a>3、Windows及Mac安装客户端</h3><p>Windows和Mac就需要手动下载了，对于用浏览器下载GitHub文件的下载速度真的不敢苟同，不过Windows上可以用freedownloader下载，Mac上用aria2下载，相比之下速度真的很感人了。</p>
+<p>将下载后的文件解压，并删除服务端的文件。</p>
+<p>然后对<code>frpc.ini</code>进行如下配置：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = <span class="number">66.42</span>.<span class="number">62.8</span></span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">token</span> = bobozuihao</span><br><span class="line"></span><br><span class="line"><span class="section">[ssh]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">22</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">6000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[web]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br><span class="line"><span class="attr">local_port</span> = <span class="number">8080</span></span><br><span class="line"><span class="attr">custom_domains</span> = web.frp.aqzscn.com</span><br></pre></td></tr></table></figure>
 
-<h2 id="5、测试配置文件是否正常"><a href="#5、测试配置文件是否正常" class="headerlink" title="5、测试配置文件是否正常"></a>5、测试配置文件是否正常</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx –t</span><br></pre></td></tr></table></figure>
+<p>最主要的就是common的配置和web的配置了,根据我的观察，这个文件是根据[xxx]来划分范围的，如果要开启多个不同的映射，多声明几个不同名字的[xx]模块就行。</p>
+<p>因为我是在Mac上测试的，nginx的默认端口就是8080，然后修改nginx的欢迎页为<strong>this is Redirect Page</strong>以示和服务器上的默认页面的不同。</p>
+<p>命令行输入<code>.\frpc -c frpc.ini</code>即可与服务端连通，访问刚刚配置的<a href="web.frp.aqzscn.com">web.frp.aqzscn.com</a>即可访问到我们本地的欢迎页了。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g76aacvys7j30wa0em0wc.jpg" alt></p>
+<blockquote>
+<p>这张截图是映射到Windows上运行的Restful服务的页面。</p>
+</blockquote>
+<h3 id="4、功能点补充"><a href="#4、功能点补充" class="headerlink" title="4、功能点补充"></a>4、功能点补充</h3><p>上面的两张截图中，域名后面均没有加端口号，这是因为我在服务端配置了nginx转发的缘故。</p>
+<p>首先我希望我的域名<code>frp.aqzscn.com</code> 作为我的frp仪表盘页面，而<code>*.frp.aqzscn.com</code>则是客户端配置的各种映射地址，那么我需要先去域名服务提供商那里修改我的dns配置，增加两条A记录，或者索性配置一条A记录<code>*.aqzscn.com</code>转发到服务器的80端口，然后所有转发就可以放在服务器的nginx上了。</p>
+<p>下面贴出我的nginx配置供大家参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  127.0.0.1 aqzscn.com www.aqzscn.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name frp.aqzscn.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_set_header Host $host;</span><br><span class="line">                proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">                proxy_pass http://127.0.0.1:7500/;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name *.frp.aqzscn.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_set_header Host $host;</span><br><span class="line">                proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">                proxy_pass http://127.0.0.1:8080/;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="外网不能访问的问题"><a href="#外网不能访问的问题" class="headerlink" title="外网不能访问的问题"></a>外网不能访问的问题</h1><p>查看并关闭防火墙</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld.service</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br><span class="line">systemctl status firewalld.service</span><br></pre></td></tr></table></figure>
+<p>其中用server_name来匹配对应的域名，<code>proxy_set_header</code> 来保证请求的头信息和原始的头信息是一致的。</p>
+<h2 id="二级域名配置"><a href="#二级域名配置" class="headerlink" title="二级域名配置"></a>二级域名配置</h2><p>上面只是实现了简单的一个域名的映射，如需映射多个域名，就需要配置二级域名了。</p>
+<p>配置服务端：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi frp_0.29.0_linux_amd64/frps.ini</span><br></pre></td></tr></table></figure>
 
-<h1 id="CenOS-服务常用命令"><a href="#CenOS-服务常用命令" class="headerlink" title="CenOS 服务常用命令"></a>CenOS 服务常用命令</h1><h2 id="1、启动一个服务"><a href="#1、启动一个服务" class="headerlink" title="1、启动一个服务"></a>1、启动一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">subdomain_host</span> = frp.aqzscn.com</span><br></pre></td></tr></table></figure>
 
-<h2 id="2、关闭一个服务"><a href="#2、关闭一个服务" class="headerlink" title="2、关闭一个服务"></a>2、关闭一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+<p>重启FRP服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一般来说，可以通过jobs列出当前会话中的进程，然后kill %【序号】，但我是新建立的ssh连接，所以只能通过第二种方式了。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出与frps有关的进程</span></span><br><span class="line">ps -aux|grep frps</span><br><span class="line"><span class="comment"># root      7415  0.0  2.5 114076 25248 ?        Sl   Sep19   0:06 ./frps -c frps.ini</span></span><br><span class="line"><span class="comment"># root     28113  0.0  0.2 112724  2240 pts/0    S+   13:34   0:00 grep --color=auto frps</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后杀掉对应的进程号</span></span><br><span class="line"><span class="built_in">kill</span> 7415</span><br><span class="line"><span class="built_in">kill</span> 28113</span><br><span class="line"><span class="comment"># -bash: kill: (28113) - No such process</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用nohup启动frps</span></span><br><span class="line">nohup ./frps -c frps.ini &amp;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3、重启一个服务"><a href="#3、重启一个服务" class="headerlink" title="3、重启一个服务"></a>3、重启一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld.service</span><br></pre></td></tr></table></figure>
+<p>配置客户端：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mweb]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br><span class="line"><span class="attr">local_port</span> = <span class="number">8080</span></span><br><span class="line"><span class="attr">subdomain</span> = test</span><br><span class="line"><span class="comment">;这是ini文件的注释，我们可以在一个配置文件中配置多个web服务的重定向，并通过注释来关闭和开启对应的映射。</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4、显示服务状态"><a href="#4、显示服务状态" class="headerlink" title="4、显示服务状态"></a>4、显示服务状态</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld.service</span><br></pre></td></tr></table></figure>
+<p>然后启动客户端，并访问我们配置的地址：<a href="http://test.frp.aqzscn.com/" target="_blank" rel="noopener">http://test.frp.aqzscn.com/</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g76bkv7nowj31dm0j044p.jpg" alt></p>
+<p>可以明显地看到这是我们本地的网页。</p>
 
-<h2 id="5、开机时启用一个服务"><a href="#5、开机时启用一个服务" class="headerlink" title="5、开机时启用一个服务"></a>5、开机时启用一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h2 id="6、开机时禁用一个服务"><a href="#6、开机时禁用一个服务" class="headerlink" title="6、开机时禁用一个服务"></a>6、开机时禁用一个服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h2 id="7、查看服务是否开机启动"><a href="#7、查看服务是否开机启动" class="headerlink" title="7、查看服务是否开机启动"></a>7、查看服务是否开机启动</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled firewalld.service;<span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<h2 id="8、查看已启动的服务列表"><a href="#8、查看已启动的服务列表" class="headerlink" title="8、查看已启动的服务列表"></a>8、查看已启动的服务列表</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files|grep enabled</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -604,9 +670,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
+            <a href="/tags/frp/" rel="tag"><i class="fa fa-tag"></i> frp</a>
           
-            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+            <a href="/tags/内网穿透/" rel="tag"><i class="fa fa-tag"></i> 内网穿透</a>
           
         </div>
       
@@ -619,8 +685,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/22/wechat-account-03/" rel="next" title="微信公众号制作记账功能（三）">
-                <i class="fa fa-chevron-left"></i> 微信公众号制作记账功能（三）
+              <a href="/2019/09/24/CentOS快速安装SSR/" rel="next" title="CentOS快速安装SSR">
+                <i class="fa fa-chevron-left"></i> CentOS快速安装SSR
               </a>
             
           </div>
@@ -628,10 +694,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/24/CentOS快速安装SSR/" rel="prev" title="CentOS快速安装SSR">
-                CentOS快速安装SSR <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -861,7 +923,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装过程"><span class="nav-number">1.</span> <span class="nav-text">安装过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、将nginx放到yum-repro库中"><span class="nav-number">1.1.</span> <span class="nav-text">1、将nginx放到yum repro库中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、查看nginx信息"><span class="nav-number">1.2.</span> <span class="nav-text">2、查看nginx信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、使用yum安装ngnix"><span class="nav-number">1.3.</span> <span class="nav-text">3、使用yum安装ngnix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、启动nginx"><span class="nav-number">1.4.</span> <span class="nav-text">4、启动nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、查看nginx版本"><span class="nav-number">1.5.</span> <span class="nav-text">5、查看nginx版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、访问nginx"><span class="nav-number">1.6.</span> <span class="nav-text">6、访问nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、nginx配置文件目录"><span class="nav-number">2.1.</span> <span class="nav-text">1、nginx配置文件目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、修改nginx配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">2、修改nginx配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、重启服务"><span class="nav-number">2.3.</span> <span class="nav-text">3、重启服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、停止服务"><span class="nav-number">2.4.</span> <span class="nav-text">4、停止服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、测试配置文件是否正常"><span class="nav-number">2.5.</span> <span class="nav-text">5、测试配置文件是否正常</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外网不能访问的问题"><span class="nav-number">3.</span> <span class="nav-text">外网不能访问的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CenOS-服务常用命令"><span class="nav-number">4.</span> <span class="nav-text">CenOS 服务常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、启动一个服务"><span class="nav-number">4.1.</span> <span class="nav-text">1、启动一个服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、关闭一个服务"><span class="nav-number">4.2.</span> <span class="nav-text">2、关闭一个服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、重启一个服务"><span class="nav-number">4.3.</span> <span class="nav-text">3、重启一个服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、显示服务状态"><span class="nav-number">4.4.</span> <span class="nav-text">4、显示服务状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、开机时启用一个服务"><span class="nav-number">4.5.</span> <span class="nav-text">5、开机时启用一个服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、开机时禁用一个服务"><span class="nav-number">4.6.</span> <span class="nav-text">6、开机时禁用一个服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、查看服务是否开机启动"><span class="nav-number">4.7.</span> <span class="nav-text">7、查看服务是否开机启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、查看已启动的服务列表"><span class="nav-number">4.8.</span> <span class="nav-text">8、查看已启动的服务列表</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FRP内网穿透一站式配置"><span class="nav-number">1.</span> <span class="nav-text">FRP内网穿透一站式配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、FRP安装"><span class="nav-number">1.1.</span> <span class="nav-text">一、FRP安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Linux服务端安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、Linux服务端安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Linux服务端后台运行FRP"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、Linux服务端后台运行FRP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Windows及Mac安装客户端"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、Windows及Mac安装客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、功能点补充"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、功能点补充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二级域名配置"><span class="nav-number">1.2.</span> <span class="nav-text">二级域名配置</span></a></li></ol></li></ol></div>
             
 
           </div>
