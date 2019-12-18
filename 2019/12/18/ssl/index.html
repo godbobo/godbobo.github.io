@@ -103,36 +103,25 @@
 </script>
 
 
-  <meta name="description" content="在微信公众号开发中，不可避免地要遇到下载软件、支付宝支付等需求，而这些需求都是无法在微信浏览器内部实现的，那么在微信浏览器内自动跳转到外部浏览器就是一个刚需了。  百度一下微信跳转，可以发现大部分结果都被这些跳转平台承包了。  这张图片不知道为什么被删掉了，那就不添加了。大家可以自行搜索看看。  然后打开一个还可以用的跳转平台，可以看到最主要的功能就是：  IOS微信会提示用户右上角打开浏览器（">
-<meta name="keywords" content="微信开发">
+  <meta name="description" content="看着身边的网站一个个在地址栏都有了小锁的标志，自己也是心痒痒呀。正好今天手头的事情不多，就来搞了一下这个东西。 一、SSL证书平台选择首先，提供SSL证书的平台有很多，各种云计算平台也都有提供的。不过他们提供的免费证书大部分都是有时间限制的，三个月到一年不等，到期就要自己手动续期。 本着一劳永逸的原则，我开始了寻找SSL证书平台之旅。结果并没有找到自己想要的结果，不过中途却发现了有些平台用的就是L">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="这个微信浏览器跳转技巧，每个月能帮你省几百块">
-<meta property="og:url" content="https://godbobo.github.io/2019/10/22/wx-jump/index.html">
+<meta property="og:title" content="在自己的网站中启用HTTPS服务">
+<meta property="og:url" content="https://godbobo.github.io/2019/12/18/ssl/index.html">
 <meta property="og:site_name" content="郑博的博客">
-<meta property="og:description" content="在微信公众号开发中，不可避免地要遇到下载软件、支付宝支付等需求，而这些需求都是无法在微信浏览器内部实现的，那么在微信浏览器内自动跳转到外部浏览器就是一个刚需了。  百度一下微信跳转，可以发现大部分结果都被这些跳转平台承包了。  这张图片不知道为什么被删掉了，那就不添加了。大家可以自行搜索看看。  然后打开一个还可以用的跳转平台，可以看到最主要的功能就是：  IOS微信会提示用户右上角打开浏览器（">
+<meta property="og:description" content="看着身边的网站一个个在地址栏都有了小锁的标志，自己也是心痒痒呀。正好今天手头的事情不多，就来搞了一下这个东西。 一、SSL证书平台选择首先，提供SSL证书的平台有很多，各种云计算平台也都有提供的。不过他们提供的免费证书大部分都是有时间限制的，三个月到一年不等，到期就要自己手动续期。 本着一劳永逸的原则，我开始了寻找SSL证书平台之旅。结果并没有找到自己想要的结果，不过中途却发现了有些平台用的就是L">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7muzypij30xn0kk4f1.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7oce07wj30q90b73zb.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7qa8uafj30wa0eh74w.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7qwop7aj30c40rtn11.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7xc8xnxj30sa09b75s.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w80i6zgij30t40c276i.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w86aaafnj30hi0t6tc2.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w86kfwy4j30hi0t6q5v.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w89hz0svj30nd0bzdhl.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8i3mqidj30hi0t60vs.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8kc7kctj30t20dgjt7.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8ly8r8pj30yi0hvtav.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8mssxudj30hi0t6dhb.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8o5ms69j30m107raan.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8ovbtqjj30m40agdgp.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w94hy6ewj30hi0t6dh2.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w9ngdv9qj30zw0u0tei.jpg">
-<meta property="og:updated_time" content="2019-10-22T01:16:19.274Z">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/gWCBS6wsqlZNunh.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/6LcOrWDlGKoNVen.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/W3hnXZY79uBrHm1.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/4IlQTG7VjefJC63.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/L6xHtVZiIDRPT5j.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/N9kzF3wExchR1Ae.png">
+<meta property="og:updated_time" content="2019-12-18T08:57:00.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="这个微信浏览器跳转技巧，每个月能帮你省几百块">
-<meta name="twitter:description" content="在微信公众号开发中，不可避免地要遇到下载软件、支付宝支付等需求，而这些需求都是无法在微信浏览器内部实现的，那么在微信浏览器内自动跳转到外部浏览器就是一个刚需了。  百度一下微信跳转，可以发现大部分结果都被这些跳转平台承包了。  这张图片不知道为什么被删掉了，那就不添加了。大家可以自行搜索看看。  然后打开一个还可以用的跳转平台，可以看到最主要的功能就是：  IOS微信会提示用户右上角打开浏览器（">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7muzypij30xn0kk4f1.jpg">
+<meta name="twitter:title" content="在自己的网站中启用HTTPS服务">
+<meta name="twitter:description" content="看着身边的网站一个个在地址栏都有了小锁的标志，自己也是心痒痒呀。正好今天手头的事情不多，就来搞了一下这个东西。 一、SSL证书平台选择首先，提供SSL证书的平台有很多，各种云计算平台也都有提供的。不过他们提供的免费证书大部分都是有时间限制的，三个月到一年不等，到期就要自己手动续期。 本着一劳永逸的原则，我开始了寻找SSL证书平台之旅。结果并没有找到自己想要的结果，不过中途却发现了有些平台用的就是L">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/18/gWCBS6wsqlZNunh.png">
 
 
 
@@ -142,7 +131,7 @@
 
   
   
-  <link rel="canonical" href="https://godbobo.github.io/2019/10/22/wx-jump/">
+  <link rel="canonical" href="https://godbobo.github.io/2019/12/18/ssl/">
 
 
 
@@ -152,7 +141,7 @@
   };
 </script>
 
-  <title>这个微信浏览器跳转技巧，每个月能帮你省几百块 | 郑博的博客</title>
+  <title>在自己的网站中启用HTTPS服务 | 郑博的博客</title>
   
 
 
@@ -370,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2019/10/22/wx-jump/">
+    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2019/12/18/ssl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godbobo">
@@ -387,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">这个微信浏览器跳转技巧，每个月能帮你省几百块
+          <h1 class="post-title" itemprop="name headline">在自己的网站中启用HTTPS服务
 
               
             
@@ -413,10 +402,14 @@
                 
               
 
-              <time title="创建时间：2019-10-22 09:16:19" itemprop="dateCreated datePublished" datetime="2019-10-22T09:16:19+08:00">2019-10-22</time>
+              <time title="创建时间：2019-12-18 16:56:59 / 修改时间：16:57:00" itemprop="dateCreated datePublished" datetime="2019-12-18T16:56:59+08:00">2019-12-18</time>
             </span>
           
 
+          
+            
+
+            
           
 
           
@@ -446,8 +439,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/22/wx-jump/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/22/wx-jump/" itemprop="commentCount"></span>
+                <a href="/2019/12/18/ssl/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/18/ssl/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -455,7 +448,7 @@
 
           
           
-            <span id="/2019/10/22/wx-jump/" class="post-meta-item leancloud_visitors" data-flag-title="这个微信浏览器跳转技巧，每个月能帮你省几百块">
+            <span id="/2019/12/18/ssl/" class="post-meta-item leancloud_visitors" data-flag-title="在自己的网站中启用HTTPS服务">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -479,7 +472,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">4.2k</span>
+              <span title="本文字数">5.6k</span>
             </span>
           
 
@@ -491,7 +484,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">7 分钟</span>
+              <span title="阅读时长">9 分钟</span>
             </span>
           
 
@@ -510,91 +503,93 @@
       
 
       
-        <p> 在微信公众号开发中，不可避免地要遇到下载软件、支付宝支付等需求，而这些需求都是无法在微信浏览器内部实现的，那么在微信浏览器内自动跳转到外部浏览器就是一个刚需了。</p>
-<p> 百度一下微信跳转，可以发现大部分结果都被这些跳转平台承包了。</p>
+        <p>看着身边的网站一个个在地址栏都有了小锁的标志，自己也是心痒痒呀。正好今天手头的事情不多，就来搞了一下这个东西。</p>
+<h2 id="一、SSL证书平台选择"><a href="#一、SSL证书平台选择" class="headerlink" title="一、SSL证书平台选择"></a>一、SSL证书平台选择</h2><p>首先，提供SSL证书的平台有很多，各种云计算平台也都有提供的。不过他们提供的免费证书大部分都是有时间限制的，三个月到一年不等，到期就要自己手动续期。</p>
+<p>本着一劳永逸的原则，我开始了寻找SSL证书平台之旅。结果并没有找到自己想要的结果，不过中途却发现了有些平台用的就是<strong>Let’s Encrypt</strong>这个平台的证书，就是做了一个中间商，只不过不赚差价而已。而我生平，最讨厌中间商。</p>
+<p>于是我直接找到了“厂商”，点击<code>Get Started</code>，就开始了探索<strong>CentOs下Nginx服务器安装SSL证书</strong>的旅程。</p>
 <blockquote>
-<p>这张图片不知道为什么被删掉了，那就不添加了。大家可以自行搜索看看。</p>
+<p>剧透一下结果：证书同样需要续期，不过可以安装工具自动续期，相当于永久的证书了。</p>
 </blockquote>
-<p>然后打开一个还可以用的跳转平台，可以看到最主要的功能就是：</p>
-<ul>
-<li>IOS微信会提示用户右上角打开浏览器（这谁还不会提示呀）</li>
-<li>安卓微信则是自动用默认浏览器打开链接（我们主要就是实现安卓端的自动跳转功能）</li>
-</ul>
-<p>然后看了一下价格，500块？一个月？最低？溜了溜了溜了。 <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7muzypij30xn0kk4f1.jpg" alt></p>
-<p>不过穷人也有穷人的办法，这些平台显然没有和微信合作，那么他们是怎么做到这个跳转功能的呢？我们需要跟踪调研一番。。。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7oce07wj30q90b73zb.jpg" alt></p>
-<p>打开这个平台的演示二维码，我的是苹果手机，扫描之后确实只显示了<em>请点击右上角选择Safari打开</em>的提示。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7qa8uafj30wa0eh74w.jpg" alt></p>
-<p>然后我解析了这个二维码，得到一个地址，直接在浏览器打开。哇噻，神奇呀，竟然跳到百度了。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7qwop7aj30c40rtn11.jpg" alt> </p>
-<p>经过以上步骤，已经验证了以下两点：</p>
-<ol>
-<li>苹果手机确实只能用户手动打开浏览器</li>
-<li>普通浏览器可以直接跳转到指定页面</li>
-</ol>
-<p>那么现在需要验证的就是安卓微信里面打开这个网页是否可以跳转到外部浏览器并打开指定页面。</p>
-<p>不过在此之前，我们先对普通浏览器打开这个网页的所有请求进行抓包，稍后比较与安卓微信打开这个网页的请求进行比较，看看两者是不是有哪些不一样的地方导致了安卓微信可以跳转到外部浏览器而不是直接打开页面。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w7xc8xnxj30sa09b75s.jpg" alt></p>
-<p>先看第一个请求，这是我们解析的网址，然后重定向到了<code>http://jumpqq.doupie.cn</code>这个网址，看域名可以发现，这应该是一个新浪微博的<strong>短网址生成</strong>工具，最后的<code>jumpqq.doupie.cn</code>才是我们真正跳转到的地址。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w80i6zgij30t40c276i.jpg" alt></p>
-<p>然后在这个真正的网址中，它又重定向到了<code>www.baidu.com</code>，也就是刚刚我们看到的页面。</p>
-<p>分析了普通的浏览器跳转流程之后，我们来验证和分析一下安卓微信浏览器里面的跳转流程。</p>
-<p>打开genimotion模拟器并安装微信，然后随便找个聊天框输入刚刚解析出来的网址并打开，可以发现确实是自动弹出了跳转浏览器的选项（我没有设置默认浏览器，如果设置了会直接使用默认浏览器打开）。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w86aaafnj30hi0t6tc2.jpg" alt></p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w86kfwy4j30hi0t6q5v.jpg" alt></p>
-<p>现在问题来了，怎么抓包呢？</p>
-<p>在Chrome浏览器地址栏输入<code>chrome://inspect/#devices</code>打开设备管理界面，如果此时你的微信浏览器还没有关掉的话，稍等一下应该可以看到一个页面在手机下面的列表中。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w89hz0svj30nd0bzdhl.jpg" alt></p>
+<p>在快速入门章节，可以看到有两种方式可以获取到SSL证书。而我的情况，适用于第一种，拥有命令行访问权限。</p>
 <blockquote>
-<p>Tips:使用这个调试功能需要FQ，如果没有FQ的话是可以显示这个页面但无法打开具体页面的开发者工具的。</p>
+<p>摘自<a href="https://letsencrypt.org/zh-cn/getting-started/" target="_blank" rel="noopener">https://letsencrypt.org/zh-cn/getting-started/</a></p>
+<p>我们建议大多数具有命令行访问权限的人使用 Certbot ACME 客户端。它可以在不下线您的服务器的前提下自动执行证书颁发和安装。对于不需要自动配置的用户，Certbot 还提供专家模式。它易于使用，适用于许多操作系统，并且具有出色的（注：英文）文档。访问 Certbot 官网 以获取针对于操作系统和 Web 服务器的订制文档。</p>
 </blockquote>
-<p>下面还有一个问题，只有手机里面已经打开了页面这个列表里面才会显示，我们才能去抓包。而我们要分析的主要就是<strong>打开这个页面之前的请求流程</strong>，此时我们在自己电脑上编写一个HTML文件并放到Nginx服务器上，页面里面就放一个链接，指向刚刚的那个网址。这样的话就是先打开自己写的页面，然后电脑上打开该页面的调试工具，然后点击刚刚的链接就可以成功抓到我们需要的请求了。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-cmn-hans"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge, chrome=1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>微信跳转测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://sinaurl.cn/AiYTFMTB"</span>&gt;</span>下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>所以接下来，就是如何使用certbot的问题了。</p>
+<h2 id="二、配置环境并安装CertBot"><a href="#二、配置环境并安装CertBot" class="headerlink" title="二、配置环境并安装CertBot"></a>二、配置环境并安装CertBot</h2><p>在<strong>Let’s Encrypt</strong>的快速入门页面中，可以找到<a href="https://certbot.eff.org/" target="_blank" rel="noopener">CertBot官网</a>的链接。</p>
+<p>进入CertBot官网后，首先它让我们检查自己的网站是否已经有了HTTPS访问的功能。很显然，我的并没有，于是就需要安装CertBot了。</p>
+<p><img src="https://i.loli.net/2019/12/18/gWCBS6wsqlZNunh.png" alt></p>
+<p>点击右边的<strong>Get Certbot instructions</strong>来查看Certbot的使用说明。</p>
+<p>在新的页面里，会让你选择自己的服务运行环境，我这里就是Nginx运行在CentOS7上面，所以按下图这样选择。</p>
+<p><img src="https://i.loli.net/2019/12/18/6LcOrWDlGKoNVen.png" alt></p>
+<p>然后向下滚动页面就可以看到适用于自己系统的安装方式了。</p>
+<p>第一步是通过SSH连接到服务器，第二部具体是在干嘛的不太清楚，就按它的要求开启这个东西就行了。开启方法如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8i3mqidj30hi0t60vs.jpg" alt></p>
-<p>在微信中输入并打开我们刚刚写的页面（地址要用电脑的局域网地址），先不要点击下载，等待Chrome浏览器设备调试页面出现这个页面之后，点击标题下方的<code>inspect</code>,等待片刻即可看到熟悉的开发者工具了。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8kc7kctj30t20dgjt7.jpg" alt></p>
-<p>然后把开发者工具切换到<code>Network</code>一栏。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8ly8r8pj30yi0hvtav.jpg" alt></p>
-<p>在模拟器中点击<em>下载</em>这个超链接</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8mssxudj30hi0t6dhb.jpg" alt></p>
-<p>然后来分析这次请求中究竟有什么是和普通浏览器的请求是不同的：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8o5ms69j30m107raan.jpg" alt></p>
-<p>第一步还是短网址的重定向，和普通浏览器流程相同。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w8ovbtqjj30m40agdgp.jpg" alt></p>
-<p>但在真正跳转的网址里面就有不同之处了，首先状态码变成了<strong>206</strong>，然后Headers里面还多了一个<code>Content-Disposition</code>属性，那么我想应该就是这两处不同导致可以在安卓微信里跳转到外部浏览器了。</p>
+<p>第三步是开启可选模块，我当时啥都没想直接就开启了，现在想想似乎并不需要开启这个，因为那啥Oracle Linux应该和我无关吧。不过保险起见还是把命令列出来吧，下次再安装的时候万一就用到了呢。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line"></span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是安装本篇文章的主角<strong>Certbot</strong>了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot python2-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、修改nginx配置文件并启用SSL证书"><a href="#三、修改nginx配置文件并启用SSL证书" class="headerlink" title="三、修改nginx配置文件并启用SSL证书"></a>三、修改nginx配置文件并启用SSL证书</h2><p>接下来，就到了第五步了。这时，它又让我选择安装方式，那看了说明自然是第一种简单呀，一键自动化配置，爽！</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+
+<p>爽不过一秒，命令行就报错了。</p>
 <blockquote>
-<p>百度百科HTTP状态码206含义（部分）：</p>
-<h3 id="206-Partial-Content"><a href="#206-Partial-Content" class="headerlink" title="206 Partial Content"></a>206 Partial Content</h3><p>服务器已经成功处理了部分 GET 请求。类似于 FlashGet 或者迅雷这类的 HTTP下载工具都是使用此类响应实现断点续传或者将一个大文档分解为多个下载段同时下载。</p>
+<p>这里还要说一下，如果是第一次执行这个命令，会让你输入自己的邮箱，输入一下即可。</p>
 </blockquote>
+<p><img src="https://i.loli.net/2019/12/18/W3hnXZY79uBrHm1.png" alt></p>
+<p>看上面说的，再去搜索了一下相关问题，大概知道是自己在nginx配置文件中用了中文注释的原因。删掉后再次运行，又卡在了服务器验证这一步，看来安装SSL服务并没有想象中那么简单啊。</p>
+<p><img src="https://i.loli.net/2019/12/18/4IlQTG7VjefJC63.png" alt></p>
+<p>然后在一番乱搜之后，在这两篇文章的帮助下我完成了SSL服务的搭建。</p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-centos-7" target="_blank" rel="noopener">How To Secure Nginx with Let’s Encrypt on CentOS 7</a><br><a href="https://linuxize.com/post/secure-nginx-with-let-s-encrypt-on-centos-7/" target="_blank" rel="noopener">Secure Nginx with Let’s Encrypt on CentOS 7</a></p>
+<p>在第一篇文章里，我用一下命令<strong>更新了一下自己的防火墙配置</strong>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许http和https和重定向访问</span></span><br><span class="line">sudo firewall-cmd --add-service=http</span><br><span class="line">sudo firewall-cmd --add-service=https</span><br><span class="line">sudo firewall-cmd --runtime-to-permanent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许外网访问80端口和443端口</span></span><br><span class="line">sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>这样做了之后，还是没有效果（以前曾经把80端口放开过），然后又参考第二篇文章，终于成功了，具体步骤如下：</p>
+<h3 id="1、生成强Dh-Diffie-Hellman-群（并不懂在说啥，敲代码就是了）"><a href="#1、生成强Dh-Diffie-Hellman-群（并不懂在说啥，敲代码就是了）" class="headerlink" title="1、生成强Dh (Diffie-Hellman)群（并不懂在说啥，敲代码就是了）"></a>1、生成强Dh (Diffie-Hellman)群（并不懂在说啥，敲代码就是了）</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>MDN Content-Disposition含义：</p>
-<p>在常规的HTTP应答中，<strong>Content-Disposition</strong>`响应头指示回复的内容该以何种形式展示，是以<strong>内联</strong>的形式（即网页或者页面的一部分），还是以<strong>附件</strong>的形式下载并保存到本地。</p>
-<p>作为消息主体中的消息头</p>
-<p>在HTTP场景中，第一个参数或者是<code>inline</code>（默认值，表示回复中的消息体会以页面的一部分或者整个页面的形式展示），或者是<code>attachment</code>（意味着消息体应该被下载到本地；大多数浏览器会呈现一个“保存为”的对话框，将<code>filename</code>的值预填为下载后的文件名，假如它存在的话）。</p>
+<p>这个步骤需要花费一段时间，屏幕中会有大片英文逗号出现。</p>
 </blockquote>
-<p>查阅上方资料得知这两个东西都是在告诉微信浏览器，我接下来要做的事你干不了，赶紧找个专业的来干吧。</p>
-<p>理解了关键点之后，也就知道要做到跳转这个功能，最重要的是服务端的响应，我这里就以Nginx为例，配置了当请求来自微信浏览器时，就把某个路径下的页面响应加上特殊的请求头：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">		listen 80;</span><br><span class="line">		</span><br><span class="line">		location / &#123;</span><br><span class="line">			root html;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		# 指定目录下的文件</span><br><span class="line">		location /test/ss/ &#123;</span><br><span class="line">			# 微信内置浏览器</span><br><span class="line">			if ($http_user_agent ~* (MicroMessenger)) &#123;</span><br><span class="line">				add_header Content-Type &quot;text/plain; charset=utf-8&quot;;</span><br><span class="line">				add_header Content-Disposition &quot;attachment;filename=open.apk&quot;;</span><br><span class="line">				return 206;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、创建存放证书的目录"><a href="#2、创建存放证书的目录" class="headerlink" title="2、创建存放证书的目录"></a>2、创建存放证书的目录</h3><blockquote>
+<p>我猜是这么回事。进行HTTPS访问时，总会有一个额外的操作用来获取证书内容，那证书从哪里来呢？当然要找个地方存起来才能让浏览器获取。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/lib/letsencrypt/.well-known</span><br><span class="line">sudo chgrp nginx /var/lib/letsencrypt</span><br><span class="line">sudo chmod g+s /var/lib/letsencrypt</span><br><span class="line"></span><br><span class="line">sudo mkdir /etc/nginx/snippets</span><br></pre></td></tr></table></figure>
 
-<p>然后就在<code>test</code>目录下新建一个<code>ss</code>目录，然后放上我们要跳转的页面（即微信会屏蔽的页面），随便写点内容，然后修改我们刚刚的“首页”，把地址换为这个随便写的页面地址。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-cmn-hans"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge, chrome=1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>微信跳转测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://192.168.3.132/test/ss/toc.html"</span>&gt;</span>下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>目录创建好之后，将下面两个文件创建到<code>/etc/nginx/snippets</code>目录下面：</p>
+<p><strong>/etc/nginx/snippets/letsencrypt.conf</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">  allow all;</span><br><span class="line">  root /var/lib/letsencrypt/;</span><br><span class="line">  default_type &quot;text/plain&quot;;</span><br><span class="line">  try_files $uri =404;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后尝试在微信里面打开这个链接，就可以实现跳转浏览器的效果了。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w94hy6ewj30hi0t6dh2.jpg" alt></p>
-<p>至此，主要功能已经实现了，但还有一个短网址生成服务，我们可以用下面这个网站提供的服务，不仅可以手动输入，还提供API生成，可以说十分良心了。</p>
-<p><a href="http://www.sina-url.cn/" target="_blank" rel="noopener">http://www.sina-url.cn/</a></p>
-<p>下面写一下我想的微信跳转功能的完整思路：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7w9ngdv9qj30zw0u0tei.jpg" alt></p>
-<p>根据上面的思路，还有一些做法需要完善：</p>
-<p>服务端判断<strong>安卓微信</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># nginx不支持&amp;&amp;和||和if嵌套，通过变量来解决</span><br><span class="line">set $flag 0;</span><br><span class="line"></span><br><span class="line">if ($http_user_agent ~* MicroMessenger)&#123;</span><br><span class="line">		set $flag “$&#123;flag&#125;1”;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if ($http_user_agent ~* Android)&#123;</span><br><span class="line">		set $flag “$&#123;flag&#125;1”;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 此时，如果有一个为真，flag=01，全部为真，flag=011</span><br><span class="line">if ($flag = &quot;011&quot;) &#123;</span><br><span class="line">		add_header Content-Type &quot;text/plain; charset=utf-8&quot;;</span><br><span class="line">		add_header Content-Disposition &quot;attachment;filename=open.apk&quot;;</span><br><span class="line">		return 206;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>/etc/nginx/snippets/ssl.conf</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ssl_dhparam /etc/ssl/certs/dhparam.pem;</span><br><span class="line"></span><br><span class="line">ssl_session_timeout 1d;</span><br><span class="line">ssl_session_cache shared:SSL:50m;</span><br><span class="line">ssl_session_tickets off;</span><br><span class="line"></span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">ssl_ciphers &apos;ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS&apos;;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">ssl_stapling on;</span><br><span class="line">ssl_stapling_verify on;</span><br><span class="line">resolver 8.8.8.8 8.8.4.4 valid=300s;</span><br><span class="line">resolver_timeout 30s;</span><br><span class="line"></span><br><span class="line">add_header Strict-Transport-Security &quot;max-age=15768000; includeSubdomains; preload&quot;;</span><br><span class="line">add_header X-Frame-Options SAMEORIGIN;</span><br><span class="line">add_header X-Content-Type-Options nosniff;</span><br></pre></td></tr></table></figure>
 
-<p>js判断微信浏览器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_weixn</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">var</span> ua = navigator.userAgent.toLowerCase();  </span><br><span class="line">     <span class="keyword">if</span>(ua.match(<span class="regexp">/MicroMessenger/i</span>)==<span class="string">"micromessenger"</span>) &#123;  </span><br><span class="line">         <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">         <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">     &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到上面的文件内容基本可以知道，这是Nginx配置文件的格式。把这个配置文件单独拿出来存放应该是为了在Nginx主配置文件中复用上面的配置内容（每个不同的域名均需要配置SSL证书）。</p>
+<h3 id="3、修改Nginx配置文件"><a href="#3、修改Nginx配置文件" class="headerlink" title="3、修改Nginx配置文件"></a>3、修改Nginx配置文件</h3><p>这时，我们需要在Nginx配置文件中的<code>server</code>区域内加入下面这句话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include snippets/letsencrypt.conf;</span><br></pre></td></tr></table></figure>
 
-<p>这样一整套流程下来，就实现了区分不同设备，对于可以自动跳转设备进行跳转了。</p>
-<p>怎么样？我不是一个标题党吧，嘿嘿</p>
+<p>这时，这个配置文件就大概应该是这个样子的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name example.com www.example.com;</span><br><span class="line"></span><br><span class="line">  include snippets/letsencrypt.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后重启Nginx服务器：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+
+<p>然后教程中的下一步是以<code>certbot certonly</code>开头的一段命令，用于获取对应域名的证书。而我运行这个命令死活不成功，会报<code>No valid IP addresses found for aqzscn.com</code>的错误。</p>
+<p>万念俱灰之下，我又回到Certbot的说明文档，执行了一下<code>sudo certbot --nginx</code>，结果一路畅通无阻，中间还提示我是否要将HTTP请求重定向为HTTPS请求，那当然OK呀。</p>
+<p>下面是我生成证书成功后提示的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/www.aqzscn.com/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/www.aqzscn.com/privkey.pem</span><br><span class="line">   Your cert will expire on 2020-03-17. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot again</span><br><span class="line">   with the &quot;certonly&quot; option. To non-interactively renew *all* of</span><br><span class="line">   your certificates, run &quot;certbot renew&quot;</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
+
+<p>证书生成成功之后，还需要做的就是自动更新证书，在命令行中敲以下命令即可：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' &amp;&amp; certbot renew"</span> | sudo tee -a /etc/crontab &gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、测试结果"><a href="#四、测试结果" class="headerlink" title="四、测试结果"></a>四、测试结果</h2><p>这个时候，就到了检验结果的时候了。</p>
+<p>在浏览器地址栏输入自己的域名后，预期的网页终于出现了。不过奇怪的一点是，如果我不加HTTPS，它并不会给我重定向到HTTPS的请求。</p>
+<p><img src="https://i.loli.net/2019/12/18/L6xHtVZiIDRPT5j.png" alt></p>
+<p>因为我这个域名下面还有几个子域名，于是我将其也加入了HTTPS访问。但这次我在地址栏输入<code>care.aqzscn.com</code>时，它又确实给我重定向到HTTPS请求了。很奇怪很奇怪，应该是有哪里没有搞好把。</p>
+<p><img src="https://i.loli.net/2019/12/18/N9kzF3wExchR1Ae.png" alt></p>
+<p>此时又出现了一个问题就是我的后台服务没有开启HTTPS服务，好难啊。。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，这次是实现了在网站中添加SSL证书的功能，其中还是有一些不足需要完善，不过还是留到下次再说吧，到时候研究一下能不能把相同的证书用在没有域名的服务器上，或者说就用自己生成的证书来提供HTTPS服务，反正API请求的地址用户也看不到了。</p>
 
       
     </div>
@@ -664,7 +659,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/微信开发/" rel="tag"><i class="fa fa-tag"></i> 微信开发</a>
+            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
           
         </div>
       
@@ -677,8 +672,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/24/frp-01/" rel="next" title="FRP内网穿透一站式配置">
-                <i class="fa fa-chevron-left"></i> FRP内网穿透一站式配置
+              <a href="/2019/12/02/web-print/" rel="next" title="vue项目手写一个局部打印的组件">
+                <i class="fa fa-chevron-left"></i> vue项目手写一个局部打印的组件
               </a>
             
           </div>
@@ -686,10 +681,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/19/ios-tableview-cell-autoheight/" rel="prev" title="IOS 无需代码实现TableViewCell自适应高度">
-                IOS 无需代码实现TableViewCell自适应高度 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -933,7 +924,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#206-Partial-Content"><span class="nav-number">1.</span> <span class="nav-text">206 Partial Content</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、SSL证书平台选择"><span class="nav-number">1.</span> <span class="nav-text">一、SSL证书平台选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、配置环境并安装CertBot"><span class="nav-number">2.</span> <span class="nav-text">二、配置环境并安装CertBot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、修改nginx配置文件并启用SSL证书"><span class="nav-number">3.</span> <span class="nav-text">三、修改nginx配置文件并启用SSL证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、生成强Dh-Diffie-Hellman-群（并不懂在说啥，敲代码就是了）"><span class="nav-number">3.1.</span> <span class="nav-text">1、生成强Dh (Diffie-Hellman)群（并不懂在说啥，敲代码就是了）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、创建存放证书的目录"><span class="nav-number">3.2.</span> <span class="nav-text">2、创建存放证书的目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、修改Nginx配置文件"><span class="nav-number">3.3.</span> <span class="nav-text">3、修改Nginx配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、测试结果"><span class="nav-number">4.</span> <span class="nav-text">四、测试结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
