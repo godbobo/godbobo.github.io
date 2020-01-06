@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+  <meta name="google-site-verification" content="mZLxF48d2ip8QF6BieklFpBeCAVvBu6K3dulAYVYMSY">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+  <meta name="description" content="Electron是一个跨平台的框架，可以用网页语言来开发客户端程序，虽然说每一个应用都是一个Chrome，但毕竟也是方便了我们这些前端开发者做自己的客户端软件的梦想。 这里我为了能使用到最新版本的Electron，并没有选择用electron-vue去作为项目的基础模版，而是在github上着了一个加了webpack功能的模版，输入以下命令开始： 1git clone git@github.com">
+<meta name="keywords" content="Electron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Electron开发记事本">
+<meta property="og:url" content="https://godbobo.github.io/2020/01/06/electron-notepad/index.html">
+<meta property="og:site_name" content="郑博的博客">
+<meta property="og:description" content="Electron是一个跨平台的框架，可以用网页语言来开发客户端程序，虽然说每一个应用都是一个Chrome，但毕竟也是方便了我们这些前端开发者做自己的客户端软件的梦想。 这里我为了能使用到最新版本的Electron，并没有选择用electron-vue去作为项目的基础模版，而是在github上着了一个加了webpack功能的模版，输入以下命令开始： 1git clone git@github.com">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gajpkxu2bbj318e0owjwc.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gajpyg05u4j31ps0kuq7b.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gajq4l05azj31na0fm0wc.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gajq8r60cij31c00u0qvb.jpg">
+<meta property="og:updated_time" content="2020-01-06T01:32:04.716Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Electron开发记事本">
+<meta name="twitter:description" content="Electron是一个跨平台的框架，可以用网页语言来开发客户端程序，虽然说每一个应用都是一个Chrome，但毕竟也是方便了我们这些前端开发者做自己的客户端软件的梦想。 这里我为了能使用到最新版本的Electron，并没有选择用electron-vue去作为项目的基础模版，而是在github上着了一个加了webpack功能的模版，输入以下命令开始： 1git clone git@github.com">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gajpkxu2bbj318e0owjwc.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="郑博的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://godbobo.github.io/2020/01/06/electron-notepad/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用Electron开发记事本 | 郑博的博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f333ed4a20ac94fa7e29c77f42511df2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">郑博的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">人生如梦未醒时，梦如人生我是谁</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言板">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/message-board/" rel="section"><i class="menu-item-icon fa fa-fw fa-inbox"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://godbobo.github.io/2020/01/06/electron-notepad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godbobo">
+      <meta itemprop="description" content="红墙白雪，要你喜欢，怎能忘记">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="郑博的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Electron开发记事本
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-06 09:32:04" itemprop="dateCreated datePublished" datetime="2020-01-06T09:32:04+08:00">2020-01-06</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/用就对了/" itemprop="url" rel="index"><span itemprop="name">用就对了</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/01/06/electron-notepad/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/06/electron-notepad/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2020/01/06/electron-notepad/" class="post-meta-item leancloud_visitors" data-flag-title="使用Electron开发记事本">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">10k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">17 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Electron是一个跨平台的框架，可以用网页语言来开发客户端程序，虽然说每一个应用都是一个Chrome，但毕竟也是方便了我们这些前端开发者做自己的客户端软件的梦想。</p>
+<p>这里我为了能使用到最新版本的Electron，并没有选择用<code>electron-vue</code>去作为项目的基础模版，而是在github上着了一个加了<code>webpack</code>功能的模版，输入以下命令开始：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:szwacz/electron-boilerplate.git life-memory</span><br></pre></td></tr></table></figure>
+
+<h2 id="一、测试模版是否可用"><a href="#一、测试模版是否可用" class="headerlink" title="一、测试模版是否可用"></a>一、测试模版是否可用</h2><p>下载好之后，第一步就是将electron的版本更新到<code>v7.1.7</code>看看是否可以正常运行，这里为了避免因为网络问题导致下载失败就直接用<code>cnpm</code>进行安装了。</p>
+<p>经过测试，这个模版的运行及打包均没有问题，可以正常执行（Mac环境），这下子可以安心地去开发了。</p>
+<h2 id="二、为应用添加菜单"><a href="#二、为应用添加菜单" class="headerlink" title="二、为应用添加菜单"></a>二、为应用添加菜单</h2><p>模版中，应用的菜单并不符合记事本的要求，因此需要调整一下。菜单的定义位于<code>src/menu</code>目录下，我们要做两件事，一是为Mac系统的菜单腾出第一个位置，二是补充自己需要的菜单项。下面是我的菜单项定义：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file_menu_template.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; dialog &#125; <span class="keyword">from</span> <span class="string">'electron'</span></span><br><span class="line"><span class="keyword">import</span> log <span class="keyword">from</span> <span class="string">'electron-log'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> fileMenuTemplate = &#123;</span><br><span class="line">  label: <span class="string">'文件'</span>,</span><br><span class="line">  submenu: [</span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//   label: '新建',</span></span><br><span class="line">    <span class="comment">//   accelerator: 'CmdOrCtrl+N'</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">'打开'</span>,</span><br><span class="line">      accelerator: <span class="string">'CmdOrCtrl+O'</span>,</span><br><span class="line">      click: openFile</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      type: <span class="string">'separator'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">'保存'</span>,</span><br><span class="line">      accelerator: <span class="string">'CmdOrCtrl+S'</span>,</span><br><span class="line">      click: saveFile</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">'另存为'</span>,</span><br><span class="line">      accelerator: <span class="string">'CmdOrCtrl+Shift+S'</span>,</span><br><span class="line">      click: saveAsFile</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> macAppMenuTemplate = &#123;</span><br><span class="line">  label: <span class="string">'生活记'</span>,</span><br><span class="line">  submenu: [</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">'退出'</span>,</span><br><span class="line">      role: <span class="string">'quit'</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 打开文件</span></span><br><span class="line"><span class="comment"> * @param &#123;MenuItem&#125; menuItem 菜单项</span></span><br><span class="line"><span class="comment"> * @param &#123;BrowserWindow&#125; browserWindow 渲染进程窗口</span></span><br><span class="line"><span class="comment"> * @param &#123;Event&#125; event 事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openFile</span>(<span class="params">menuItem, browserWindow, event</span>) </span>&#123;</span><br><span class="line">  dialog.showOpenDialog(browserWindow, &#123;</span><br><span class="line">    title: <span class="string">'打开文件'</span>,</span><br><span class="line">    filters: [</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Markdown 文件'</span>, <span class="attr">extensions</span>: [<span class="string">'md'</span>, <span class="string">'markdown'</span>] &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'文本文件'</span>, <span class="attr">extensions</span>: [<span class="string">'txt'</span>] &#125;</span><br><span class="line">    ],</span><br><span class="line">    properties: [<span class="string">'openFile'</span>]</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">dialogRes</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!dialogRes.canceled) &#123;</span><br><span class="line">      <span class="comment">// 向当前获取焦点的窗口发送事件</span></span><br><span class="line">      <span class="keyword">if</span> (browserWindow) &#123;</span><br><span class="line">        browserWindow.webContents.send(<span class="string">'lm-open-file'</span>, dialogRes.filePaths)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    log.error(e)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存文件</span></span><br><span class="line"><span class="comment"> * @param &#123;MenuItem&#125; menuItem 菜单项</span></span><br><span class="line"><span class="comment"> * @param &#123;BrowserWindow&#125; browserWindow 渲染进程窗口</span></span><br><span class="line"><span class="comment"> * @param &#123;Event&#125; event 事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveFile</span>(<span class="params">menuItem, browserWindow, event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (browserWindow) &#123;</span><br><span class="line">    browserWindow.webContents.send(<span class="string">'lm-save-file'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 另存为</span></span><br><span class="line"><span class="comment"> * @param &#123;MenuItem&#125; menuItem 菜单项</span></span><br><span class="line"><span class="comment"> * @param &#123;BrowserWindow&#125; browserWindow 渲染进程窗口</span></span><br><span class="line"><span class="comment"> * @param &#123;Event&#125; event 事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveAsFile</span>(<span class="params">menuItem, browserWindow, event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (browserWindow) &#123;</span><br><span class="line">    browserWindow.webContents.send(<span class="string">'lm-save-as-file'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为第一个位置暂时也不需要添加其他内容，所以我就没有将其拆分出去，而是和文件菜单放在一个文件里了。</p>
+<blockquote>
+<p>写这篇文档时项目已经完成，所以这个文档的代码中会包含一些现在用不到的代码，见谅见谅～</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// edit_menu_template.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> editMenuTemplate = &#123;</span><br><span class="line">  label: <span class="string">"编辑"</span>,</span><br><span class="line">  submenu: [</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">"撤销"</span>, <span class="attr">accelerator</span>: <span class="string">"CmdOrCtrl+Z"</span>, <span class="attr">click</span>: undo &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">"重做"</span>, <span class="attr">accelerator</span>: <span class="string">"Shift+CmdOrCtrl+Z"</span>, <span class="attr">click</span>: redo &#125;,</span><br><span class="line">    &#123; <span class="attr">type</span>: <span class="string">"separator"</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">"剪切"</span>, <span class="attr">accelerator</span>: <span class="string">"CmdOrCtrl+X"</span>, <span class="attr">selector</span>: <span class="string">"cut:"</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">"复制"</span>, <span class="attr">accelerator</span>: <span class="string">"CmdOrCtrl+C"</span>, <span class="attr">selector</span>: <span class="string">"copy:"</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">"粘贴"</span>, <span class="attr">accelerator</span>: <span class="string">"CmdOrCtrl+V"</span>, <span class="attr">selector</span>: <span class="string">"paste:"</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">"全选"</span>, <span class="attr">accelerator</span>: <span class="string">"CmdOrCtrl+A"</span>, <span class="attr">click</span>: selectAll &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 选择全部</span></span><br><span class="line"><span class="comment"> * @param &#123;MenuItem&#125; menuItem 菜单项</span></span><br><span class="line"><span class="comment"> * @param &#123;BrowserWindow&#125; browserWindow 渲染进程窗口</span></span><br><span class="line"><span class="comment"> * @param &#123;Event&#125; event 事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectAll</span>(<span class="params">menuItem, browserWindow, event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (browserWindow) &#123;</span><br><span class="line">    browserWindow.webContents.send(<span class="string">'lm-select-all'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 撤销</span></span><br><span class="line"><span class="comment"> * @param &#123;MenuItem&#125; menuItem 菜单项</span></span><br><span class="line"><span class="comment"> * @param &#123;BrowserWindow&#125; browserWindow 渲染进程窗口</span></span><br><span class="line"><span class="comment"> * @param &#123;Event&#125; event 事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">undo</span>(<span class="params">menuItem, browserWindow, event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (browserWindow) &#123;</span><br><span class="line">    browserWindow.webContents.send(<span class="string">'lm-undo'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 重做</span></span><br><span class="line"><span class="comment"> * @param &#123;MenuItem&#125; menuItem 菜单项</span></span><br><span class="line"><span class="comment"> * @param &#123;BrowserWindow&#125; browserWindow 渲染进程窗口</span></span><br><span class="line"><span class="comment"> * @param &#123;Event&#125; event 事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">redo</span>(<span class="params">menuItem, browserWindow, event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (browserWindow) &#123;</span><br><span class="line">    browserWindow.webContents.send(<span class="string">'lm-redo'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编辑菜单里面基本上都是对文档内容的快捷操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// help_menu_template.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; app, shell &#125; <span class="keyword">from</span> <span class="string">"electron"</span>;</span><br><span class="line"><span class="keyword">import</span> jetpack <span class="keyword">from</span> <span class="string">"fs-jetpack"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> appDir = jetpack.cwd(app.getAppPath());</span><br><span class="line"><span class="keyword">const</span> manifest = appDir.read(<span class="string">"package.json"</span>, <span class="string">"json"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> helpMenuTemplate = &#123;</span><br><span class="line">  label: <span class="string">'帮助'</span>,</span><br><span class="line">  submenu: [</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">'学习Markdown语法'</span>,</span><br><span class="line">      click: <span class="function"><span class="keyword">function</span> (<span class="params">item, focusedWindow</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 打开外部文档</span></span><br><span class="line">        shell.openExternal(<span class="string">'https://www.runoob.com/markdown/md-tutorial.html'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//   label: '帮助'</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">'关于'</span>,</span><br><span class="line">      submenu: [</span><br><span class="line">        &#123;</span><br><span class="line">          label: <span class="string">'版本 v'</span> + manifest.version,</span><br><span class="line">          enabled: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//   label: '更新记录'</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>帮助菜单中则是将应用的版本号显示出来，另外还有一个开发时显示的菜单，那个菜单只需要去掉退出应用的菜单项即可。</p>
+<p>菜单定义之后，在<code>background.js</code>中，我们需要将新增的菜单定义加入，并稍微修改一下逻辑，让Mac系统下的菜单列表前面增加一个占位的菜单。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; devMenuTemplate &#125; <span class="keyword">from</span> <span class="string">"./menu/dev_menu_template"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; editMenuTemplate &#125; <span class="keyword">from</span> <span class="string">"./menu/edit_menu_template"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  macAppMenuTemplate,</span><br><span class="line">  fileMenuTemplate</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">"./menu/file_menu_template"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; helpMenuTemplate &#125; <span class="keyword">from</span> <span class="string">"./menu/help_menu_template"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> setApplicationMenu = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> menus = [fileMenuTemplate, editMenuTemplate, helpMenuTemplate];</span><br><span class="line">  <span class="keyword">if</span> (process.platform === <span class="string">"darwin"</span>) &#123;</span><br><span class="line">    menus.unshift(macAppMenuTemplate);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (env.name === <span class="string">"development"</span>) &#123;</span><br><span class="line">    menus.push(devMenuTemplate);</span><br><span class="line">  &#125;</span><br><span class="line">  Menu.setApplicationMenu(Menu.buildFromTemplate(menus));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>此时运行程序，我们定义的菜单就会如期显示出来，接下来要让程序对用户点击菜单项做出响应，则需要在菜单定义中定义<code>click函数</code>，普通的菜单点击，我们只需要将事件发送到当前聚焦的窗口，让它去处理这个事件即可。</p>
+<p>不过这里就涉及到<strong>主线程主动向渲染进程发送消息</strong>的知识了，在上面的代码中我们也可以看到，我们需要拿到browserWindow的实例，然后获取到它的webContents对象，然后就可以向其发送消息了。而渲染进程要接受消息，则是通过<code>ipcRenderer</code>去获取，这一点官方文档已经讲得很详细了，我就不再细说了。</p>
+<p>还有一种更为复杂的情况，以打开文件为例，当用户点击打开时，程序应该弹出窗口询问用户要打开哪个文件。而对话框只能由主线程来操作，当前菜单点击的处理线程正是主线程，你不可能说把事件传给渲染进程，再让渲染进程把打开对话框的事件传给你。所以最好还是直接就在这里弹出对话框，将用户选择的文件交给渲染进程处理就好了。这段代码在上面的菜单定义中也有提及。</p>
+<h2 id="三、为应用添加日志记录功能"><a href="#三、为应用添加日志记录功能" class="headerlink" title="三、为应用添加日志记录功能"></a>三、为应用添加日志记录功能</h2><p>软件开发过程中，不可避免会遇到bug，而当bug到达用户那里时，身为开发者的你是不好去调试的。所以日志记录就显得尤为关键，还好electron生态中有比较好用的<code>electron-log</code>可以使用。我的用法比较简单，就在主线程中修改了日志记录的格式，后面因为全局共享一个实例，所以其他地方就不用去修改配置了，直接引入这个包即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> log <span class="keyword">from</span> <span class="string">"electron-log"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改日志记录的格式</span></span><br><span class="line">log.transports.console.format =</span><br><span class="line">  <span class="string">"[&#123;h&#125;:&#123;i&#125;:&#123;s&#125;.&#123;ms&#125;] [&#123;level&#125; &#123;processType&#125;] › &#123;text&#125;"</span>;</span><br><span class="line">log.transports.file.format =</span><br><span class="line">  <span class="string">"[&#123;y&#125;-&#123;m&#125;-&#123;d&#125; &#123;h&#125;:&#123;i&#125;:&#123;s&#125;.&#123;ms&#125;] [&#123;level&#125;] &#123;text&#125;"</span>;</span><br><span class="line">log.debug(<span class="string">"path of user data: "</span>, app.getPath(<span class="string">"userData"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>在启动时我还去打印了一下用户数据的存放位置，方便以后排查问题。</p>
+<h2 id="四、其他关键点记录"><a href="#四、其他关键点记录" class="headerlink" title="四、其他关键点记录"></a>四、其他关键点记录</h2><p>其实我的最终目标不是开发一个简单的记事本，所以我在项目中引入了<code>CodeMirror</code>这个插件，引入的时候还是遇到了一些问题的，下面是我的解决方案：</p>
+<p>首先在js文件中实例化CodeMirror：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CodeMirror <span class="keyword">from</span> <span class="string">"codemirror/lib/codemirror"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"codemirror/mode/markdown/markdown"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.editor = CodeMirror.fromTextArea(</span><br><span class="line">      <span class="built_in">document</span>.getElementById(textareaId),</span><br><span class="line">      editorOptions</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+
+<p>到这一步还是正常的，可当我要引入它的CSS文件时，它就报错了，我也不知道为什么。但最后想出了一个解决办法，就是把css文件在html中引入：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/app.html --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"../node_modules/codemirror/lib/codemirror.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样做之后基本上就没什么问题了，关于记事本的代码其实很简单，逻辑也不复杂，就不贴出来献丑了。</p>
+<p>另外就是涉及到文件读写时，node的文件系统读写结果是通过回调函数来获取的，我觉得用起来很不爽，就写了一个工具类把它包装了一下，让它返回Promise对象。然后我用的时候就可以愉快的用<code>async/await</code>了～</p>
+<p>最后一点就是我比较喜欢用scss去写样式文件，所以需要自己配置一下scss的编译方式，首先需要安装sass：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i sass node-sass sass-loader --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>安装之后，找到<code>build/webpack.base.config.js</code>，在<code>rules</code>中添加：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">          test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">          use: [</span><br><span class="line">            &#123;</span><br><span class="line">              loader: <span class="string">'style-loader'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              loader: <span class="string">'css-loader'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              loader: <span class="string">'sass-loader'</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以解析scss文件了。</p>
+<h2 id="五、打包相关"><a href="#五、打包相关" class="headerlink" title="五、打包相关"></a>五、打包相关</h2><h3 id="1、图标"><a href="#1、图标" class="headerlink" title="1、图标"></a>1、图标</h3><p>应用做好之后，我们需要为其准备一个精美的图标，而在不同的系统上使用的图标类型是不同的，因此我们在得到一张<code>1024x1024.png</code>的图标之后，还需要为windows平台生成<code>.ico</code>格式的图标，此时我们可以在<a href="https://www.easyicon.net/language.en/covert/" target="_blank" rel="noopener">https://www.easyicon.net/language.en/covert/</a>这个网站去转换。</p>
+<p>若要为Mac平台生成<code>.icns</code>的图标则没有那么简单，因为icns格式并不是一个图标，而是包含不同分辨率图标的集合，我们需要一个一个的生成然后再去转换。</p>
+<blockquote>
+<p>我就填了这个坑，我在刚刚的网站把转换好的一张icns格式的图片放到项目中打包，结果打包后的应用是没有图标的！</p>
+</blockquote>
+<p>转换icns并没有网站可以帮我们做，我们只能在mac电脑中敲命令来做。具体可以参考<a href="https://blog.csdn.net/qq_37261367/article/details/81128276" target="_blank" rel="noopener">这个博客</a>，需要注意的是刚开始创建的目录，后面的<code>.iconset</code>不能省，前面的名字可以随便起。</p>
+<p>当图标准备完毕之后，把它们重命名替换掉项目中<code>resources</code>目录下的图标文件即可。</p>
+<h3 id="2、为程序关联文件格式"><a href="#2、为程序关联文件格式" class="headerlink" title="2、为程序关联文件格式"></a>2、为程序关联文件格式</h3><p>我希望我的程序在安装过后可以在用户想要打开文本文件时可以用我的程序来打开，可在Mac系统上，你会发现大部分应用处于灰色状态（如果你的应用不做处理，也会是这个样子的）</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gajpkxu2bbj318e0owjwc.jpg" alt></p>
+<p>为了这个小功能我谷歌了好久好久都没找到解决方案，不过最后偶然间看到了Electron-bilder的配置文档，里面描述了如何配置文件关联，我只能说，，真NM简单。。</p>
+<p>Electron-builder的配置一般会放在<code>packages.json</code>中，恰好我用的这个模版里面的打包工具就是它，我们只需要在<code>build</code>下面加上下面的配置即可关联自己定义的文件格式了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">"fileAssociations": [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"ext"</span>: <span class="string">"md"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"Markdown 文件"</span>,</span><br><span class="line">        <span class="attr">"role"</span>: <span class="string">"Editor"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"ext"</span>: <span class="string">"markdown"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"Markdown 文件"</span>,</span><br><span class="line">        <span class="attr">"role"</span>: <span class="string">"Editor"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"ext"</span>: <span class="string">"txt"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"文本文件"</span>,</span><br><span class="line">        <span class="attr">"role"</span>: <span class="string">"Editor"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+
+<p>关联之后，程序只是虚有其表，因为我们并没有真正去处理传来的文件，所以下一步就是接收文件路径。在这一步自己也爬了一个又一个坑，都是血和泪的教训啊。。。</p>
+<p>在程序启动时接收文件路径参数，乍一想这个问题，就应该是通过进程对象就可以取到了。可当时我在Mac电脑上开发，不论怎么搞都没办法获取到路径参数，谷歌也找不到答案。又是在万念俱灰之时，我去看了看官方文档，，，我只想说MMP</p>
+<p>原来，Mac系统是要监听app的<code>open-file</code>事件的，而Windows则是通过进程对象来获取文件路径。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gajpyg05u4j31ps0kuq7b.jpg" alt></p>
+<p>这样可以获取到文件路径了，但最终这个路径是要交给渲染进程去处理的，而在程序刚启动时渲染进程甚至还没有创建出来！此时，就需要在主进程中先定义一个变量保存一下接收的这个路径了，等待渲染进程加载完成后再把这个路径传给它，所以，我的整个处理逻辑如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// background.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 外部文件路径</span></span><br><span class="line"><span class="keyword">let</span> preFilePath = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'will-finish-launching'</span>, () =&gt; &#123;</span><br><span class="line">  log.debug(<span class="string">'will-finish-launching'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 打开文件事件（MacOS有效）</span></span><br><span class="line">  app.on(<span class="string">"open-file"</span>, (e, filePath) =&gt; &#123;</span><br><span class="line">    log.debug(<span class="string">"open-file: "</span>, filePath);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> fw = BrowserWindow.getFocusedWindow();</span><br><span class="line">    <span class="keyword">if</span> (fw) &#123;</span><br><span class="line">      fw.webContents.send(<span class="string">"lm-open-file"</span>, [filePath]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      preFilePath = filePath</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 检查进程是否含有参数(Windows有效)</span></span><br><span class="line">  <span class="keyword">if</span> (process.platform ===<span class="string">'win32'</span> &amp;&amp; process.argv.length &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">    log.debug(<span class="string">'process argv:'</span>, process.argv)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// windows系统当没有路径参数时这个位置默认有个.，需要加以判断</span></span><br><span class="line">    preFilePath = process.argv[<span class="number">1</span>] === <span class="string">'.'</span> ? <span class="string">''</span> : process.argv[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">mainWindow.once(<span class="string">'ready-to-show'</span>, () =&gt; &#123;</span><br><span class="line">    log.debug(<span class="string">'ready-to-show'</span>)</span><br><span class="line">    mainWindow.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查是否存在需要直接打开的文件，有的话就直接打开</span></span><br><span class="line">    <span class="keyword">if</span> (preFilePath) &#123;</span><br><span class="line">      mainWindow.webContents.send(<span class="string">'lm-open-file'</span>, [preFilePath])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>其中，在app的<code>will-finish-launching</code>事件中才开始监听文件打开事件，也是官方文档上面建议的：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gajq4l05azj31na0fm0wc.jpg" alt></p>
+<p>这样做了之后，整个记事本应用才显得完整起来。</p>
+<p>其实，上面的很多做法不仅限于记事本中使用，希望我写的文章能对大家有所帮助！</p>
+<p>下面放上我写的记事本的截图，来证明我做到过！</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gajq8r60cij31c00u0qvb.jpg" alt></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Godbobo wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Godbobo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Godbobo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Electron/" rel="tag"><i class="fa fa-tag"></i> Electron</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/27/end-2019/" rel="next" title="2019年度总结">
+                <i class="fa fa-chevron-left"></i> 2019年度总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Godbobo">
+            
+              <p class="site-author-name" itemprop="name">Godbobo</p>
+              <div class="site-description motion-element" itemprop="description">红墙白雪，要你喜欢，怎能忘记</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="GitHub &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bobobiubiubiubiu@gmail.com" title="E-Mail &rarr; mailto:bobobiubiubiubiu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056965815024/info" title="Weibo &rarr; https://weibo.com/p/1005056965815024/info" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/godbobo" title="Twitter &rarr; https://github.com/godbobo" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/zheng-bo-33-3/activities" title="Zhihu &rarr; https://www.zhihu.com/people/zheng-bo-33-3/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-university"></i>Zhihu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.instagram.com/bobobiubiubiubiu/" title="Instagram &rarr; https://www.instagram.com/bobobiubiubiubiu/" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、测试模版是否可用"><span class="nav-number">1.</span> <span class="nav-text">一、测试模版是否可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、为应用添加菜单"><span class="nav-number">2.</span> <span class="nav-text">二、为应用添加菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、为应用添加日志记录功能"><span class="nav-number">3.</span> <span class="nav-text">三、为应用添加日志记录功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、其他关键点记录"><span class="nav-number">4.</span> <span class="nav-text">四、其他关键点记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、打包相关"><span class="nav-number">5.</span> <span class="nav-text">五、打包相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、图标"><span class="nav-number">5.1.</span> <span class="nav-text">1、图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、为程序关联文件格式"><span class="nav-number">5.2.</span> <span class="nav-text">2、为程序关联文件格式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Godbobo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">93k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">2:36</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+  </div>
+<script src="/js/heart.js"></script>
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'FkAoaWugMknhSEXfUtqg0s8V-gzGzoHsz',
+    appKey: '54yJVzWEjeHxJMChYSasHSjV',
+    placeholder: '期待你的评论哦~',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</body>
+</html>
