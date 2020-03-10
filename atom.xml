@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godbobo.github.io/"/>
-  <updated>2020-01-06T01:32:04.716Z</updated>
+  <updated>2020-03-10T09:04:20.032Z</updated>
   <id>https://godbobo.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue 局部打印组件二</title>
+    <link href="https://godbobo.github.io/2020/03/10/web-print-2/"/>
+    <id>https://godbobo.github.io/2020/03/10/web-print-2/</id>
+    <published>2020-03-10T09:04:19.000Z</published>
+    <updated>2020-03-10T09:04:20.032Z</updated>
+    
+    <content type="html"><![CDATA[<p>前面我曾经写过一个局部打印的组件，但其实一直没有将其实际应用。这次公司要将项目部署出去了，然后我在自测时才发现打包后的表格<strong>样式失效了</strong>！</p><p>然后就是漫漫的找Bug过程了，找了有三四个小时，总算是一点点一点点理清了头绪，下面我来讲讲怎么解决打包后样式失效的问题。没有看过我上一篇文章的可以先去看一下。<a href="https://godbobo.github.io/2019/12/02/web-print/">传送门</a></p><h2 id="兼容性问题？"><a href="#兼容性问题？" class="headerlink" title="兼容性问题？"></a>兼容性问题？</h2><p>刚发现这个问题时，我内心是实在不愿意接受的，毕竟也是花了那么长时间去钻研这个东西了，而且平时测试的时候也并没有出现什么问题呀。</p><p>所以内心日常甩锅给兼容问题，我测了一下在tomcat服务器和nginx服务器下的表现，发现一毛一样。又猜想是浏览器问题，又在edge上试了一下，也不对。最后发现，只有开发模式和生产模式两种构建方式的不同导致了最后结果的不同。</p><p>到了这里我其实是很疑惑的，平时开发中一般都是生产模式的样式和行为都会和开发模式中一毛一样的啊，Vue怎么会让我操心这种问题呢？</p><p>然后我找到执行打印功能部分的代码，发现会在生成的iframe中导入当前页面的样式，我把最后生成的样式部分打印了出来，然后观察两种模式的不同，结果真让我发现了问题：生产模式中样式全都是<strong>link标签</strong>，而开发模式中样式都被包裹在<strong>style标签</strong>中。</p><blockquote><p>总结：开发模式中，由于我们直接编辑的<code>.vue</code>文件，vue直接将<code>.vue</code>文件中的style标签部分解析出来放到body中，而生产模式中，打包之后的文件只有标准的HTML、CSS和JS文件，也就只能用link标签引入外部CSS文件了。</p></blockquote><p>这样的不同直接就导致了我那种写法在发送打印指令时页面还没有把CSS文件加载到的问题，如下图：</p><p>弹出对话框时</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blogTIM%E6%88%AA%E5%9B%BE20200310153515.png" alt></p><p>对话框关闭后</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blogTIM%E6%88%AA%E5%9B%BE20200310151033.png" alt></p><p>在打印对话框出来时，刚刚开始请求CSS文件，此时页面上自然就不会有样式被渲染出来。在开发模式行得通的原因就是style是内嵌在页面里的，就可以直接渲染出来。</p><p>知道了问题的原因，那就好解决了，我们在iframe的onload事件中执行打印操作即可。优化后的代码如下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">printTable () &#123;</span><br><span class="line">      <span class="comment">// 1.获取要打印的内容的一份复制，否则待会儿添加节点时会将原有内容删除</span></span><br><span class="line">      <span class="keyword">const</span> content = <span class="built_in">document</span>.getElementById(<span class="string">'printTable'</span>).cloneNode(<span class="literal">true</span>)</span><br><span class="line">      <span class="comment">// 2.获取放置打印内容的iframe</span></span><br><span class="line">      <span class="keyword">const</span> ifm = <span class="built_in">document</span>.getElementById(<span class="string">'printf'</span>)</span><br><span class="line">      <span class="comment">// css会重新加载 这里监听iframe的加载事件 完成后再执行打印功能</span></span><br><span class="line">      ifm.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 4.添加打印内容并打印</span></span><br><span class="line">        ifm.contentDocument.body.appendChild(content)</span><br><span class="line">        ifm.contentWindow.print()</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 3.添加打印内容样式</span></span><br><span class="line">      <span class="keyword">const</span> styles = <span class="built_in">document</span>.querySelectorAll(<span class="string">'style,link'</span>)</span><br><span class="line">      <span class="keyword">let</span> str = <span class="string">''</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; styles.length; i++) &#123;</span><br><span class="line">          <span class="comment">// 排除其他类型的内容，如ico js</span></span><br><span class="line">        <span class="keyword">if</span> ((styles[i].tagName === <span class="string">'LINK'</span> &amp;&amp; styles[i].rel === <span class="string">'stylesheet'</span>) || styles[i].tagName === <span class="string">'STYLE'</span>) &#123;</span><br><span class="line">          str += styles[i].outerHTML</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 向iframe添加内容 注：如果没有则页面的加载事件不会触发</span></span><br><span class="line">      ifm.contentDocument.open()</span><br><span class="line">      ifm.contentDocument.write(str)</span><br><span class="line">      ifm.contentDocument.write(<span class="string">'&lt;div&gt;&lt;/div&gt;'</span>)</span><br><span class="line">      ifm.contentDocument.close()</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure><p>这样之后，就可以愉快地开始打印啦</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blogTIM%E6%88%AA%E5%9B%BE20200310153356.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前面我曾经写过一个局部打印的组件，但其实一直没有将其实际应用。这次公司要将项目部署出去了，然后我在自测时才发现打包后的表格&lt;strong&gt;样式失效了&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;然后就是漫漫的找Bug过程了，找了有三四个小时，总算是一点点一点点理清了头绪，下面我来讲讲
+      
+    
+    </summary>
+    
+      <category term="用就对了" scheme="https://godbobo.github.io/categories/%E7%94%A8%E5%B0%B1%E5%AF%B9%E4%BA%86/"/>
+    
+    
+      <category term="网页打印" scheme="https://godbobo.github.io/tags/%E7%BD%91%E9%A1%B5%E6%89%93%E5%8D%B0/"/>
+    
+      <category term="网页开发" scheme="https://godbobo.github.io/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Electron开发记事本</title>
