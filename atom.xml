@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godbobo.github.io/"/>
-  <updated>2020-04-15T13:23:55.408Z</updated>
+  <updated>2020-05-07T01:49:22.950Z</updated>
   <id>https://godbobo.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小米10青春版初体验</title>
+    <link href="https://godbobo.github.io/2020/05/07/mi10lite/"/>
+    <id>https://godbobo.github.io/2020/05/07/mi10lite/</id>
+    <published>2020-05-07T01:49:22.000Z</published>
+    <updated>2020-05-07T01:49:22.950Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近不知道为什么，有了加一个备用机的想法。然后又看到了MIUI 12的发布会，感觉系统动画挺惊艳的，于是就决定要买个小米的手机试试。但小米10的起步价就挺贵的，然后就瞧上了发布会右下角的青春版了，想着应该也能用它体验一把MIUI 12吧。</p><p>当时青春版还要预约，我懒得多这一步，就直接在某东下单了，不过还是等到了5月2号才到我手上。目前也把玩了两三天了，正好今天出去拍了点照，思考了一下人生，就想着把自己对这部手机的观感说一下。</p><h2 id="开箱-伪"><a href="#开箱-伪" class="headerlink" title="开箱(伪)"></a>开箱(伪)</h2><blockquote><p>因为箱子已经开了两天了，刚拍的图没啥仙气，所以就叫伪开箱吧。</p></blockquote><p>青春版手机盒的图案是随机的，我拿到的是这个样子的：</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_2276.jpg" alt></p><p>拆开之后里面有充电器和充电线，以及一个手机壳和两个贴纸：</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_222141.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_222058.jpg" alt></p><p>手机其实已经贴了一层保护膜，并且感觉不是糊弄人的膜，这一点还挺好的。</p><blockquote><p>其实我下单之后还无聊地去了小米的直播间，看到主播说后壳挺好看的，可以不用带壳。然后我问难道不怕摔吗，主播回答买手机会赠送碎屏保。。。</p></blockquote><p>因为这个手机是在店里买的，不知道赠品是否和官方的赠品是一致的，下面是我得到的赠品：</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_222358.jpg" alt></p><p>其中那个三拖一的充电线对我来说是真的有用，耳机一定吃灰，充电宝大概率吃灰。</p><p>手机照片就不发了，官方的图比我拍的美多了。</p><p>简单谈一下手机外观，一个不太好的设计是手机喇叭只有一边有，听筒部位也不能跟IOS一样在播放音乐时使用。震动没仔细看参数，但感觉应该只是普通的震动。屏幕的话没什么研究，就觉得显示效果还可以的。</p><h2 id="系统体验"><a href="#系统体验" class="headerlink" title="系统体验"></a>系统体验</h2><p>小米10青春版预装MIUI 11最新稳定版，<strong>MIUI 12稳定版将于6月底发布</strong>。</p><p>所以，我只能先看看ADUI的表现了。</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/20200504234406.png" alt></p><p>上面这张图是我在系统更新里截图之后在相册里查看的，可以发现原本显示位置的区域显示了截图的页面标题，从这一点我就可以看出MIUI这个系统确实是在用心做了。</p><p>![](<a href="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/May-05-2020" target="_blank" rel="noopener">https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/May-05-2020</a> 00-25-13.gif)</p><p>MIUI 12发布会上说的应用打开与回到桌面的动画，不知道是什么情况，现在的系统就有，可能是我拙略的眼睛看不出二者的区别吧。应用卸载的动画也是图标被击碎的样子，和发布会上的也没什么不同。</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/Screenshot_2020-05-04-23-59-04-832_com.android.settings.jpg" alt></p><p>一直有一种奇怪的感觉，就是MIUI这类高度定制化的系统里面一定有不少配置项供用户选择。可让我惊讶的是设置首页的配置项才21个，有点过于简洁了，以至于我想找三指截屏的功能没找到，试了一下才发现有这个功能。原因可能是这种截屏方式已经成为各个手机厂商的默认规范，不需要再提示用户怎么去操作了。</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/Screenshot_2020-05-05-00-27-46-264_com.miui.aod.jpg" alt></p><p>还有想说的一点是息屏显示时间，本来以为可以一直在息屏状态下显示的，结果只会显示10秒，配置里的配置项也仅有一个，那还有什么配置的必要呢？所以目前来看这个息屏的功能就是耍酷，没有实用价值，试问谁会在刚息屏10秒内需要了解时间的？</p><blockquote><p>最后，为了耍酷，我依旧开启了这个功能。</p></blockquote><p>另外MIUI系统应用的广告真是无孔不入（排除最基础的系统应用，如：设置），在我按照一定的方法将每个应用的广告开关关闭之后，我仍然可以在音乐的专辑封面中看到广告。有些软件的广告在我看来有其存在的合理性，所以就不提了。</p><p>最后谈一下MIUI 12吧，既然没有稳定版的，那去刷个内测版的玩玩应该可以吧。所以我先到微信公众号，想要获取资格，然后提示我截止时间已过。然后到小米社区，申请开发版内测和公测资格，经过了复杂的“开卷考试”及半天左右的审核时间，我拿到了开发版内测和公测资格。</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/Screenshot_2020-05-05-00-33-09-947_com.xiaomi.vipaccount.jpg" alt></p><p>然后要如何体验呢？安装包不知道哪里下载，系统更新也检测不到新版本。然后看到官方的答疑：</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/Screenshot_2020-05-05-00-35-27-692_com.xiaomi.vipaccount.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/Screenshot_2020-05-05-00-33-48-798_com.android.updater.jpg" alt></p><p>结果发现并没有对应的选项，所以我现在只是有资格却无能力体验MIUI 12的人。。</p><p>在逛论坛时发现开发版内测的机型中好像没有小米10青春版，可能这是导致我不能体验的原因。还看到有条消息说5月8日发布公测版，那就表示那时我可能可以体验。另外还看到有条比较失望的消息，星球动画小米10青春版不能用，因为性能不够。确实，2500全花在5G上了，CPU都没有上8系列，玩个炉石都有点卡。</p><p>现在最期待的一个功能就是多任务的设计了，感觉这个设计IOS应该学习，虽然感觉IOS的沙盒系统会很难实现这样的功能。</p><p>总之，尽管没有体验到MIUI 12，但MIUI系统已经发展到12代了，里面的许多体验还是很不错的，是我认为的还算优秀的系统了。</p><h2 id="拍照样张"><a href="#拍照样张" class="headerlink" title="拍照样张"></a>拍照样张</h2><p>下面简单发一下今天拍摄的图片，整体感觉是不错的，但自拍和拍莲花时却排出了油腻的感觉，我油腻我知道，莲花油腻就有点不对劲了啊。</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_162618.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_130520.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_130856.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_124927.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_141445.jpg" alt></p><p>然后开启夜拍模式拍了两张夜景，感觉效果还算OK。</p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_195620.jpg" alt></p><p><img src="https://bobo-image.oss-cn-beijing.aliyuncs.com/blog/IMG_20200504_195015.jpg" alt></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整体来说，这款手机基本上把今年所有的热点参数都加上了，5G、50倍潜望式镜头、渐变机身等，但同时为了压低价格又舍弃了一部分性能，导致MIUI 12最具噱头的星球动画都无法使用，是一个比较遗憾的点。</p><p>只谈MIUI 12的话，我觉得确实可以和IOS系统打个擂台了，在某些场景的易用性确实要比IOS好上一些。但是还是打不过IOS，减分的点在我看来是安卓生态和系统广告。</p><p>最后，如果再给我一次机会的话，我可能不会买这款手机，而是选择一款不带5G功能的上一代旗舰小米手机。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近不知道为什么，有了加一个备用机的想法。然后又看到了MIUI 12的发布会，感觉系统动画挺惊艳的，于是就决定要买个小米的手机试试。但小米10的起步价就挺贵的，然后就瞧上了发布会右下角的青春版了，想着应该也能用它体验一把MIUI 12吧。&lt;/p&gt;
+&lt;p&gt;当时青春版还要预约，
+      
+    
+    </summary>
+    
+      <category term="APP体验师" scheme="https://godbobo.github.io/categories/APP%E4%BD%93%E9%AA%8C%E5%B8%88/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>便捷天气使用条款</title>
@@ -251,9 +275,9 @@
     </summary>
     
     
-      <category term="树莓派" scheme="https://godbobo.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
       <category term="数码管" scheme="https://godbobo.github.io/tags/%E6%95%B0%E7%A0%81%E7%AE%A1/"/>
+    
+      <category term="树莓派" scheme="https://godbobo.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
   </entry>
   
@@ -277,9 +301,9 @@
     </summary>
     
     
-      <category term="有源蜂鸣器" scheme="https://godbobo.github.io/tags/%E6%9C%89%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8/"/>
-    
       <category term="树莓派" scheme="https://godbobo.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="有源蜂鸣器" scheme="https://godbobo.github.io/tags/%E6%9C%89%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8/"/>
     
   </entry>
   
@@ -511,34 +535,6 @@
         &lt;p&gt;这里是对Hexo的第三次探究主要就是将博客的内容丰富了一下。&lt;/p&gt;
 &lt;p&gt;有兴趣的小伙伴可以看看前面两篇文章：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://godbobo.github.io/2019/07/14/learn-hexo-01/&quot;&gt;Hexo搭建Githu
-      
-    
-    </summary>
-    
-      <category term="好多坑" scheme="https://godbobo.github.io/categories/%E5%A5%BD%E5%A4%9A%E5%9D%91/"/>
-    
-    
-      <category term="hexo" scheme="https://godbobo.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo搭建Github Pages个人博客（二）</title>
-    <link href="https://godbobo.github.io/2019/07/14/learn-hexo-02/"/>
-    <id>https://godbobo.github.io/2019/07/14/learn-hexo-02/</id>
-    <published>2019-07-14T14:40:21.000Z</published>
-    <updated>2019-07-14T14:40:21.821Z</updated>
-    
-    <content type="html"><![CDATA[<p>有点无聊，有点焦虑。</p><p>今天下午刚搞完第一波Hexo的部署，晚上又闲的没事干，那就继续捣鼓这个博客吧。</p><p>这是第二篇有关Hexo的文章，没有看过第一篇的可以去瞅瞅：</p><p><a href="https://godbobo.github.io/2019/07/14/learn-hexo-01/">Hexo搭建Github Pages个人博客（一）</a></p><h1 id="一、背景动画"><a href="#一、背景动画" class="headerlink" title="一、背景动画"></a>一、背景动画</h1><p>相信大家在浏览网站时肯定见过网页背景随鼠标移动而变化的特效，以前以为很高大上，原来就是引一个js库的事。</p><blockquote><p>这个功能仅适用于next主题，其他主题没有实验过。</p></blockquote><p>打开<code>/themes/next/_config.yml</code>，搜索<code>Animation Settings</code>，第一个默认是开启的，看着可配置项有<code>fadeIn</code>之类的，猜想应该就是首页加载时各个部件的渐隐效果，那就不去动它了。</p><p>下面第二个叫<code>pace</code>的，看注释应该是进度条动画，那我觉得聊胜于无，开启就是了。下面就以这个库为例，讲一下怎么开启这个动画效果。</p><p>首先当然是要把<code>pace.enable</code>设置为<code>true</code>，单单这样是不够的，next主题并没有包含这个插件。如果就这样去运行，页面不会发生任何变化，而且控制台还会报404错误。</p><p>因此下一步就是去下载这个插件，next主题很贴心地把插件的地址放在了注释里面：</p><p><img src="https://i.loli.net/2019/07/14/5d2b17a2962a946732.png" alt></p><p>下载之后将其解压到<code>/themes/next/sources/lib</code>下面，然后将文件夹重命名为<code>pace</code>。</p><blockquote><p>其他插件的导入方式类似，文件夹的名称要和配置文件中的名称保持一致。</p></blockquote><p>导入成功之后就可以运行查看效果了。默认的<code>minimal</code>是浏览器顶部的一个蓝色进度条动画（页面加载时显示，普通情况下一条黑边）。</p><p>为了方便大家对比，也是解决这个无聊的周末夜晚，我一个一个把这些效果实验一下，供大家参考：</p><p><a href="#1、进度条动画主题描述">1、进度条动画主题描述</a></p><blockquote><p>进度条下面的就都是背景动画了，官方文档说不能同时开启两个，但我试了一下，可以呀，只是不太好看而已~</p></blockquote><p>我也把所有的背景动画的特效试了一下，大家可以看截图选择自己看着舒服的。</p><p><a href="#2、背景动画特效展示">2、背景动画特效展示</a></p><blockquote><p><strong>注意</strong>：下载的插件要把目录中的<code>.github</code>目录删掉，否则提交到github之后会找不到插件的路径。</p></blockquote><h1 id="二、百度统计"><a href="#二、百度统计" class="headerlink" title="二、百度统计"></a>二、百度统计</h1><p>详见<a href="https://theme-next.iissnan.com/third-party-services.html#analytics-baidu" target="_blank" rel="noopener">https://theme-next.iissnan.com/third-party-services.html#analytics-baidu</a></p><p>配置成功后可以将项目发布在github上，然后检查是否安装正确：</p><p><img src="https://i.loli.net/2019/07/14/5d2b2df59e46e11713.png" alt></p><h1 id="三、谷歌站点收录"><a href="#三、谷歌站点收录" class="headerlink" title="三、谷歌站点收录"></a>三、谷歌站点收录</h1><p>详见<a href="https://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools" target="_blank" rel="noopener">https://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools</a></p><p>刚刚配置的时候忘了截图了，现在已经找不到那个页面了。</p><p>不过只要注意在输入网址之后展开第一种验证方式就可以找到我们要的代码了。</p><h1 id="四、本地搜索功能"><a href="#四、本地搜索功能" class="headerlink" title="四、本地搜索功能"></a>四、本地搜索功能</h1><p>用第三方搜索还要注册还要收费，我只需要一个简单的搜索哦~</p><p>详见<a href="https://theme-next.iissnan.com/third-party-services.html#local-search" target="_blank" rel="noopener">https://theme-next.iissnan.com/third-party-services.html#local-search</a></p><p><img src="https://i.loli.net/2019/07/14/5d2b2dc06746f68964.png" alt></p><p>搭建完成的效果也还OK</p><h1 id="五、显示文章基本信息"><a href="#五、显示文章基本信息" class="headerlink" title="五、显示文章基本信息"></a>五、显示文章基本信息</h1><p>就是这种效果：</p><p><img src="https://i.loli.net/2019/07/14/5d2b30450ce4141448.png" alt></p><p>打开<code>_config.yml</code>配置站点：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line"><span class="attr">  symbols:</span> <span class="literal">true</span> <span class="comment"># 文章字数</span></span><br><span class="line"><span class="attr">  time:</span> <span class="literal">true</span> <span class="comment"># 阅读时长</span></span><br><span class="line"><span class="attr">  total_symbols:</span> <span class="literal">true</span> <span class="comment"># 所有文章总字数</span></span><br><span class="line"><span class="attr">  total_time:</span> <span class="literal">true</span> <span class="comment"># 所有文章阅读中时长</span></span><br></pre></td></tr></table></figure><p>打开<code>/themes/next/_config.yml</code>配置主题：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line"><span class="attr">  separated_meta:</span> <span class="literal">true</span>  <span class="comment"># 是否换行显示 字数统计 及 阅读时长</span></span><br><span class="line"><span class="attr">  item_text_post:</span> <span class="literal">true</span>  <span class="comment"># 文章 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line"><span class="attr">  item_text_total:</span> <span class="literal">false</span> <span class="comment"># 博客底部统计 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line"><span class="attr">  awl:</span> <span class="number">4</span></span><br><span class="line"><span class="attr">  wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure><p>这样我们只是配置好了，但是插件还没有安装，下面就安装插件（网上看的一篇文章说next主题自带该插件，我信以为真，结果死活不显示统计数量，也不报错，还专门去github上下载该插件，结果最后才发现是要用npm安装的。。。）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br></pre></td></tr></table></figure><p>然后重新运行就可以了，底部也会出现整个站点的统计字数。</p><h1 id="六、滚动时显示文章进度"><a href="#六、滚动时显示文章进度" class="headerlink" title="六、滚动时显示文章进度"></a>六、滚动时显示文章进度</h1><p>在主题配置中搜索<code>back2top</code>，然后你懂的~</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 在侧边栏显示该控件</span></span><br><span class="line"><span class="attr">  sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 显示阅读进度</span></span><br><span class="line"><span class="attr">  scrollpercent:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>然后效果如下：</p><p><img src="https://i.loli.net/2019/07/14/5d2b36481c0f979568.png" alt></p><p>在点击这个控件后就会返回顶部。</p><p>虽然说放在侧边栏与潜意识里的返回顶部按钮不同，且用百分比来装饰，让人误以为它只是用来显示而不能点击的。但胜在能与周围融为一体呀，我不管，我就要这么设置！</p><h1 id="七、生成网站地图"><a href="#七、生成网站地图" class="headerlink" title="七、生成网站地图"></a>七、生成网站地图</h1><p>第三步已经生成了谷歌的站点地图，这里的设置主要是针对百度的。</p><p>安装<code>sitemap</code>插件：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add hexo-generator-sitemap</span><br><span class="line">$ yarn add hexo-generator-baidu-sitemap</span><br></pre></td></tr></table></figure><p>然后将站点配置文件中的url改为自己的github地址即可。</p><p>重新运行，从地址栏输入<code>/baidusitemap.xml</code>查看有没有生成。</p><p><img src="https://i.loli.net/2019/07/14/5d2b3cd50360797106.png" alt></p><blockquote><p>似乎百度不能抓取github.io下的内容，那搞它有什么用，不搞了不搞了。</p></blockquote><h1 id="八、附录"><a href="#八、附录" class="headerlink" title="八、附录"></a>八、附录</h1><h2 id="1、进度条动画主题描述"><a href="#1、进度条动画主题描述" class="headerlink" title="1、进度条动画主题描述"></a>1、进度条动画主题描述</h2><table><thead><tr><th>theme</th><th>效果描述</th></tr></thead><tbody><tr><td>big-counter</td><td>页面右上角显示加载百分比（数字）</td></tr><tr><td>bounce</td><td>页面右上角显示一个跳动的小球，逐渐远去并消失</td></tr><tr><td>barber-shop</td><td>整个页面都被进度条占满。。。</td></tr><tr><td>center-atom</td><td>页面中间显示一个小花，花朵中间显示加载百分比</td></tr><tr><td>center-circle</td><td>页面中间显示有百分比的圆，有一个翻转消失的动画</td></tr><tr><td>center-radar</td><td>页面中间一个雷达旋转的动画</td></tr><tr><td>center-simple</td><td>顾名思义，特别简单，页面中间一个进度条</td></tr><tr><td>corner-indicator</td><td>右上角一个切角，里面是转圈的线条</td></tr><tr><td>fill-left</td><td>从左到右填充页面，与barber-shop的区别是不会遮挡页面元素。（十分不推荐选这个）</td></tr><tr><td>flat-top</td><td>页面上方显示一个较宽的进度条</td></tr><tr><td>flash</td><td>页面上方显示较细的进度条，同时右上角有个加载状态的圆。（整体感觉不错，我可能会选它）</td></tr><tr><td>loading-bar</td><td>同样是页面中间一个进度条。。</td></tr><tr><td>mac-osx</td><td>页面产生波浪，顶部有进度条。。（不是太好看呀，感觉侮辱了macOs呀）</td></tr><tr><td>material</td><td>页面中间一个透明的圆，里面是百分比。（挺清爽的感觉，还可以）</td></tr><tr><td>minimal</td><td>页面上方显示一个很细的进度条</td></tr></tbody></table><p>这些主题尝试下来，有一个共同的特点，在页面超过一屏的情况下，顶部会有一个黑色的进度条区域（不管这里会不会显示进度条），所以建议选择带有<strong>顶部进度条</strong>的主题。</p><h2 id="2、背景动画特效展示"><a href="#2、背景动画特效展示" class="headerlink" title="2、背景动画特效展示"></a>2、背景动画特效展示</h2><p>canvas_nest:</p><p><img src="https://i.loli.net/2019/07/14/5d2b20f80689359611.png" alt></p><p>就是红框中的那些线条，可以跟随鼠标移动。</p><p>three.three_waves:</p><blockquote><p>three共包含三种特效，因此配置文件中有两个开关都要打开才行。</p></blockquote><p><img src="https://i.loli.net/2019/07/14/5d2b21ae53fcd20531.png" alt></p><p>效果挺震撼的，在页面空白区域比较多的时候看着特别爽。</p><p>three.canvas_lines:</p><p><img src="https://i.loli.net/2019/07/14/5d2b223ac6d9173596.png" alt></p><p>three.canvas_sphere:</p><p><img src="https://i.loli.net/2019/07/14/5d2b228770dd943557.png" alt></p><p>这个动画动的幅度比较小，一般只能在页面切换时才能看到，平时就被文章给盖住了。</p><p>canvas_ribbon：</p><p><img src="https://i.loli.net/2019/07/14/5d2b22ecc174c58373.png" alt></p><p>这个不会动，只会在鼠标点击时切换背景。</p><p>总的来说，这些动画都挺好看的，但是我就觉得有一种哗众取宠的感觉。我的注意力应该放在文字本身，你旁边动来动去的背景是想干啥？</p><p>所以最终我选择了奢华低调有内涵的<code>three.canvas_sphere</code></p><p>最后，还是想说一下，本来想搞一个评论系统的，结果leanCloud刚实名认证不能创建应用，其他的要么被墙要么收费，真是难为死我了。</p><p>说不得还得来个Hexo系列文章三呢。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;有点无聊，有点焦虑。&lt;/p&gt;
-&lt;p&gt;今天下午刚搞完第一波Hexo的部署，晚上又闲的没事干，那就继续捣鼓这个博客吧。&lt;/p&gt;
-&lt;p&gt;这是第二篇有关Hexo的文章，没有看过第一篇的可以去瞅瞅：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://godbobo.github.io/
       
     
     </summary>
